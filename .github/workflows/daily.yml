@@ -1,0 +1,43 @@
+name: Daily Acca
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 06:00 UTC = 07:00 Lagos
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-acca
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build today's slip
+        run: node src/run.mjs
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
+          MAX_REQUESTS: ${{ vars.MAX_REQUESTS }}
+          RATE_PER_MIN: ${{ vars.RATE_PER_MIN }}
+          SHORTLIST: ${{ vars.SHORTLIST }}
+          CORNERS_DEPTH: ${{ vars.CORNERS_DEPTH }}
+      - name: Save results to the repo
+        if: always()
+        run: |
+          git config user.name "daily-acca-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && exit 0
+          git commit -m "Daily slip $(TZ=Africa/Lagos date +%F)"
+          git push
