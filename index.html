@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Acca</title>
+<style>
+  :root {
+    --bg: #0e1411; --panel: #16201b; --line: #24332b; --text: #e8efe9; --muted: #8fa398;
+    --accent: #3ddc84; --win: #3ddc84; --loss: #ff6b6b; --void: #f5c451; --pending: #8fa398;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+  h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+  h1 span { color: var(--accent); }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 28px 0 10px; font-weight: 600; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  .stat b { display: block; font-size: 20px; font-variant-numeric: tabular-nums; }
+  .stat small { color: var(--muted); font-size: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 6px 16px; }
+  .leg { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .leg:last-child { border-bottom: 0; }
+  .match { font-weight: 600; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .pick { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 6px; }
+  .pick .label { color: var(--accent); font-weight: 600; }
+  .odd { font-variant-numeric: tabular-nums; font-weight: 700; background: #0b100d; border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px; white-space: nowrap; }
+  .why { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .total { display: flex; justify-content: space-between; padding: 14px 0; font-weight: 600; border-top: 1px solid var(--line); }
+  .total .big { font-size: 20px; color: var(--accent); }
+  .bar { height: 6px; background: #0b100d; border-radius: 3px; overflow: hidden; margin-top: 6px; }
+  .bar i { display: block; height: 100%; background: var(--accent); }
+  .res { font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: .05em; }
+  .won { color: var(--win); } .lost { color: var(--loss); } .void { color: var(--void); } .pending { color: var(--pending); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 9px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; }
+  td.r, th.r { text-align: right; }
+  details summary { cursor: pointer; color: var(--muted); padding: 12px 0; }
+  .empty { padding: 18px 0; color: var(--muted); }
+  footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
+  @media (max-width: 520px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Daily <span>Acca</span></h1>
+    <div class="sub" id="when"></div>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <h2>Today's slip</h2>
+  <div id="main"></div>
+  <div id="backup"></div>
+
+  <h2>Yesterday</h2>
+  <div id="yesterday"></div>
+
+  <h2>Other legs that passed the filters</h2>
+  <div class="card" id="pool"></div>
+
+  <h2>History</h2>
+  <div class="card"><table id="history"></table></div>
+
+  <footer>
+    Chances are model estimates (60% bookmaker price, 40% our goals model, capped at 3 points above the bookmaker).
+    No bet is safe — the record above is the honest test of whether this works. Stake only what you can afford to lose.
+  </footer>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const pct = (p) => p == null ? '–' : Math.round(p * 100) + '%';
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const t = (iso) => new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Lagos' });
+const d = (s) => new Date(s + 'T12:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+
+function slipHtml(s, withWhy) {
+  const legs = s.legs.map((l) => {
+    const c = l.ctx || {};
+    const res = l.result && l.result !== 'pending' ? ` <span class="res ${l.result}">${l.result}${l.score ? ' · ' + l.score : ''}</span>` : '';
+    return `<div class="leg">
+      <div class="match">${esc(c.match)}${res}</div>
+      <div class="meta">${esc(c.league)} · ${c.kickoff ? t(c.kickoff) : ''}${c.referee ? ' · Ref ' + esc(c.referee.split(',')[0]) : ''}</div>
+      <div class="pick"><span class="label">${esc(l.label)}${l.note ? ` <span class="meta">(${esc(l.note)})</span>` : ''}</span><span class="odd">${l.odd.toFixed(2)}</span></div>
+      <div class="meta">Chance ${pct(l.p)} · bookmaker ${pct(l.fair)} · model ${pct(l.model)}</div>
+      ${withWhy && c.why ? `<div class="why">${esc(c.why.join(' · '))}</div>` : ''}
+    </div>`;
+  }).join('');
+  return `<div class="card">${legs}
+    <div class="total"><span>Total odds <span class="big">${s.totalOdds.toFixed(2)}</span></span>
+    <span>Chance <span class="big">${pct(s.prob)}</span></span></div>
+    <div class="bar" style="margin:-6px 0 14px"><i style="width:${Math.round(s.prob * 100)}%"></i></div></div>`;
+}
+
+async function load() {
+  const bust = '?t=' + Date.now();
+  const [latest, history] = await Promise.all([
+    fetch('data/latest.json' + bust).then((r) => r.json()).catch(() => ({})),
+    fetch('data/history.json' + bust).then((r) => r.json()).catch(() => []),
+  ]);
+
+  if (!latest.date) {
+    $('main').innerHTML = '<div class="card empty">No slip yet. It appears after the first daily run (07:00 Lagos) or when you press "Run workflow" on GitHub.</div>';
+    return;
+  }
+  $('when').textContent = `${d(latest.date)} · updated ${new Date(latest.generatedAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Lagos' })}`;
+
+  const st = latest.stats || {};
+  const settled = history.map((h) => h.slips?.[0]).filter((s) => s && (s.result === 'won' || s.result === 'lost'));
+  const predicted = settled.length ? settled.reduce((a, s) => a + s.prob, 0) / settled.length : null;
+  $('stats').innerHTML = [
+    [`${st.won ?? 0}/${st.settled ?? 0}`, 'slips won'],
+    [`${pct(st.hitRate)}`, `actual vs ${pct(predicted)} predicted`],
+    [`${(st.profitUnits ?? 0) >= 0 ? '+' : ''}${st.profitUnits ?? 0}u`, 'profit at 1 unit/slip'],
+    [st.streak ? `${Math.abs(st.streak)}${st.streak > 0 ? 'W' : 'L'}` : '–', 'current streak'],
+  ].map(([b, s]) => `<div class="stat"><b>${b}</b><small>${s}</small></div>`).join('');
+
+  const [main, backup] = latest.slips || [];
+  $('main').innerHTML = main ? slipHtml(main, true) : `<div class="card empty">${esc(latest.notice || 'No slip today — not enough legs passed the safety filters.')}</div>`;
+  $('backup').innerHTML = backup ? `<details><summary>Backup slip (different games) · ${backup.totalOdds.toFixed(2)} @ ${pct(backup.prob)}</summary>${slipHtml(backup, true)}</details>` : '';
+
+  const y = latest.yesterday?.slips?.[0];
+  $('yesterday').innerHTML = y
+    ? `<div class="card"><div class="total" style="border:0"><span class="res ${y.result}">${y.result}${y.paidOdds ? ' @ ' + y.paidOdds : ''}</span><span class="meta">${d(latest.yesterday.date)}</span></div>${y.legs.map((l) => `<div class="leg"><div class="match">${esc(l.ctx?.match)} <span class="res ${l.result}">${l.result}${l.score ? ' · ' + l.score : ''}</span></div><div class="meta">${esc(l.label)} @ ${l.odd.toFixed(2)}</div></div>`).join('')}</div>`
+    : '<div class="card empty">No slip yesterday.</div>';
+
+  const pool = latest.topLegs || [];
+  $('pool').innerHTML = pool.length
+    ? pool.map((l) => `<div class="leg"><div class="match">${esc(l.match)}</div><div class="meta">${esc(l.league)} · ${t(l.kickoff)}</div><div class="pick"><span>${esc(l.label)} <span class="meta">${pct(l.p)}</span></span><span class="odd">${l.odd.toFixed(2)}</span></div></div>`).join('')
+    : '<div class="empty">None today.</div>';
+
+  const rows = [...history].reverse().filter((h) => h.slips?.[0]).slice(0, 60);
+  $('history').innerHTML = `<tr><th>Date</th><th class="r">Legs</th><th class="r">Odds</th><th class="r">Chance</th><th class="r">Result</th></tr>` +
+    rows.map((h) => { const s = h.slips[0]; return `<tr><td>${d(h.date)}</td><td class="r">${s.legs.length}</td><td class="r">${s.totalOdds.toFixed(2)}</td><td class="r">${pct(s.prob)}</td><td class="r"><span class="res ${s.result}">${s.result}</span></td></tr>`; }).join('');
+}
+load();
+</script>
+</body>
+</html>
