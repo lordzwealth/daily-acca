@@ -1,1 +1,20 @@
-{}
+{
+ "date": "2026-11-18",
+ "generatedAt": "2026-11-18T11:02:10.909Z",
+ "requestsUsed": 3,
+ "scanned": 1,
+ "analysed": 0,
+ "slips": [],
+ "topLegs": [],
+ "notice": null,
+ "stats": {
+  "settled": 0,
+  "won": 0,
+  "hitRate": null,
+  "expectedWins": 0,
+  "profitUnits": 0,
+  "roi": null,
+  "streak": 0
+ },
+ "yesterday": null
+}
