@@ -1,8 +1,8 @@
 {
- "date": "2026-11-18",
- "generatedAt": "2026-11-18T11:02:10.909Z",
+ "date": "2026-11-19",
+ "generatedAt": "2026-11-19T07:53:41.234Z",
  "requestsUsed": 3,
- "scanned": 1,
+ "scanned": 2,
  "analysed": 0,
  "slips": [],
  "topLegs": [],
@@ -16,5 +16,8 @@
   "roi": null,
   "streak": 0
  },
- "yesterday": null
+ "yesterday": {
+  "date": "2026-11-18",
+  "slips": []
+ }
 }
