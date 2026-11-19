@@ -2,7 +2,8 @@ name: Daily Acca
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # 06:00 UTC = 07:00 Lagos
+    - cron: '23 5 * * *'   # 06:23 Lagos
+    - cron: '41 6 * * *'   # 07:41 Lagos backup (skipped if 06:23 already ran)
   workflow_dispatch:
 
 permissions:
@@ -18,10 +19,19 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - name: Skip if today's slip already exists
+        id: check
+        run: |
+          TODAY=$(TZ=Africa/Lagos date +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && grep -q "\"date\": \"$TODAY\"" data/latest.json; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/setup-node@v4
+        if: steps.check.outputs.skip != 'true'
         with:
           node-version: 20
       - name: Build today's slip
+        if: steps.check.outputs.skip != 'true'
         run: node src/run.mjs
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
@@ -33,7 +43,7 @@ jobs:
           SHORTLIST: ${{ vars.SHORTLIST }}
           CORNERS_DEPTH: ${{ vars.CORNERS_DEPTH }}
       - name: Save results to the repo
-        if: always()
+        if: always() && steps.check.outputs.skip != 'true'
         run: |
           git config user.name "daily-acca-bot"
           git config user.email "actions@users.noreply.github.com"
