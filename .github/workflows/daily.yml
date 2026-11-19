@@ -50,4 +50,5 @@ jobs:
           git add data
           git diff --cached --quiet && exit 0
           git commit -m "Daily slip $(TZ=Africa/Lagos date +%F)"
+          git pull --rebase origin main
           git push
