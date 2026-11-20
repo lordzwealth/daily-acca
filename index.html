@@ -70,6 +70,7 @@
 
   <footer>
     Chances are model estimates (60% bookmaker price, 40% our goals model, capped at 3 points above the bookmaker).
+    ≈ marks an estimated price for markets the free odds feed doesn't carry; check your bookmaker's actual price.
     No bet is safe — the record above is the honest test of whether this works. Stake only what you can afford to lose.
   </footer>
 </main>
@@ -88,7 +89,7 @@ function slipHtml(s, withWhy) {
     return `<div class="leg">
       <div class="match">${esc(c.match)}${res}</div>
       <div class="meta">${esc(c.league)} · ${c.kickoff ? t(c.kickoff) : ''}${c.referee ? ' · Ref ' + esc(c.referee.split(',')[0]) : ''}</div>
-      <div class="pick"><span class="label">${esc(l.label)}${l.note ? ` <span class="meta">(${esc(l.note)})</span>` : ''}</span><span class="odd">${l.odd.toFixed(2)}</span></div>
+      <div class="pick"><span class="label">${esc(l.label)}${l.note ? ` <span class="meta">(${esc(l.note)})</span>` : ''}</span><span class="odd">${l.estimated ? '≈' : ''}${l.odd.toFixed(2)}</span></div>
       <div class="meta">Chance ${pct(l.p)} · bookmaker ${pct(l.fair)} · model ${pct(l.model)}</div>
       ${withWhy && c.why ? `<div class="why">${esc(c.why.join(' · '))}</div>` : ''}
     </div>`;
@@ -133,7 +134,7 @@ async function load() {
 
   const pool = latest.topLegs || [];
   $('pool').innerHTML = pool.length
-    ? pool.map((l) => `<div class="leg"><div class="match">${esc(l.match)}</div><div class="meta">${esc(l.league)} · ${t(l.kickoff)}</div><div class="pick"><span>${esc(l.label)} <span class="meta">${pct(l.p)}</span></span><span class="odd">${l.odd.toFixed(2)}</span></div></div>`).join('')
+    ? pool.map((l) => `<div class="leg"><div class="match">${esc(l.match)}</div><div class="meta">${esc(l.league)} · ${t(l.kickoff)}</div><div class="pick"><span>${esc(l.label)} <span class="meta">${pct(l.p)}</span></span><span class="odd">${l.estimated ? '≈' : ''}${l.odd.toFixed(2)}</span></div></div>`).join('')
     : '<div class="empty">None today.</div>';
 
   const rows = [...history].reverse().filter((h) => h.slips?.[0]).slice(0, 60);

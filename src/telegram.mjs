@@ -29,13 +29,14 @@ export function formatMessage({ date, slips, yesterday, stats, dashboardUrl, not
     s.legs.forEach((l, i) => {
       const c = l.ctx;
       lines.push(`${i + 1}. <b>${esc(c.match)}</b> · ${esc(c.league)} · ${time(c.kickoff)}`);
-      lines.push(`   👉 ${esc(l.label)} @<b>${l.odd.toFixed(2)}</b> — chance ${pct(l.p)}${l.note ? ` (${l.note})` : ''}`);
+      lines.push(`   👉 ${esc(l.label)} @<b>${l.estimated ? '≈' : ''}${l.odd.toFixed(2)}</b> — chance ${pct(l.p)}${l.note ? ` (${l.note})` : ''}`);
       if (si === 0) lines.push(`   <i>${esc(c.why.join(' · '))}</i>`);
     });
-    lines.push(`Total odds <b>${s.totalOdds.toFixed(2)}</b> · combined chance <b>~${pct(s.prob)}</b>`);
+    lines.push(`Total odds <b>${s.legs.some((l) => l.estimated) ? '≈' : ''}${s.totalOdds.toFixed(2)}</b> · combined chance <b>~${pct(s.prob)}</b>`);
     lines.push('');
   });
 
+  if (slips.some((s) => s.legs.some((l) => l.estimated))) lines.push('≈ = estimated price. Check your bookmaker; skip a leg offered well below it.');
   if (notice && slips.length) lines.push(`ℹ️ ${esc(notice)}`);
   if (dashboardUrl) lines.push(`📊 <a href="${dashboardUrl}">Full breakdown & history</a>`);
   lines.push('<i>Probabilities are estimates, not guarantees. Stake only what you can afford to lose.</i>');

@@ -18,7 +18,8 @@ export function filterLegs(legs) {
       l.odd >= CONFIG.minLegOdds &&
       l.odd <= CONFIG.maxLegOdds &&
       l.p >= CONFIG.minLegProb &&
-      l.edge >= CONFIG.minEdge &&
+      // real prices must clear the edge bar; estimated prices can't, so require the model to agree with the market instead
+      (l.estimated ? l.p >= l.fair - 0.01 : l.edge >= CONFIG.minEdge) &&
       l.gap > -CONFIG.maxModelMarketGap && // our model must not be much less confident than the bookie
       !l.blocked,
   );
@@ -41,7 +42,8 @@ function dedupe(legs) {
   return out.sort((a, b) => b.p - a.p);
 }
 
-export function buildSlips(candidates, fixturesById, howMany = 2) {
+// meta: { [fixtureId]: { ts, comp } }
+export function buildSlips(candidates, meta, howMany = 2) {
   const pool = dedupe(candidates).slice(0, 40);
   const combos = [];
   const n = pool.length;
@@ -56,8 +58,8 @@ export function buildSlips(candidates, fixturesById, howMany = 2) {
       if (chosen.some((c) => c.fixtureId === l.fixtureId)) continue;
       // max one draw-no-bet per slip: refunds shrink the payout below the target odds
       if (l.settle.kind === 'dnb' && chosen.some((c) => c.settle.kind === 'dnb')) continue;
-      const lg = fixturesById[l.fixtureId]?.league?.id;
-      if (chosen.filter((c) => fixturesById[c.fixtureId]?.league?.id === lg).length >= CONFIG.maxLegsPerLeague) continue;
+      const lg = meta[l.fixtureId]?.comp;
+      if (chosen.filter((c) => meta[c.fixtureId]?.comp === lg).length >= CONFIG.maxLegsPerLeague) continue;
       chosen.push(l);
       rec(i + 1, chosen, odds * l.odd, prob * l.p);
       chosen.pop();
@@ -72,7 +74,7 @@ export function buildSlips(candidates, fixturesById, howMany = 2) {
   for (const c of combos) {
     if (c.legs.some((l) => used.has(l.fixtureId))) continue;
     slips.push({
-      legs: c.legs.sort((a, b) => fixturesById[a.fixtureId].fixture.timestamp - fixturesById[b.fixtureId].fixture.timestamp),
+      legs: c.legs.sort((a, b) => meta[a.fixtureId].ts - meta[b.fixtureId].ts),
       totalOdds: +c.odds.toFixed(2),
       prob: +c.prob.toFixed(3),
       ev: +(c.prob * c.odds - 1).toFixed(3),

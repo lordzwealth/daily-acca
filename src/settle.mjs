@@ -1,20 +1,20 @@
 // Grades legs and slips once results are in.
 
-const VOID_STATUSES = new Set(['PST', 'CANC', 'ABD', 'AWD', 'WO']);
-const DONE_STATUSES = new Set(['FT', 'AET', 'PEN']);
+import { goalsOf } from './context.mjs';
 
-// returns 'won' | 'lost' | 'void' | 'pending'
-export function gradeLeg(leg, fx, corners) {
-  const st = fx?.fixture?.status?.short;
-  if (!fx || !st) return 'pending';
-  if (VOID_STATUSES.has(st)) return 'void';
-  if (!DONE_STATUSES.has(st)) return 'pending';
+const VOID_STATUSES = new Set(['POSTPONED', 'CANCELLED', 'SUSPENDED', 'AWARDED']);
 
-  const ft = fx.score.fulltime; // 90 minutes, as bookmakers settle
-  const ht = fx.score.halftime;
-  const h = ft.home, a = ft.away;
+// m: football-data.org match. Returns 'won' | 'lost' | 'void' | 'pending'
+export function gradeLeg(leg, m) {
+  if (!m?.status) return 'pending';
+  if (VOID_STATUSES.has(m.status)) return 'void';
+  if (m.status !== 'FINISHED') return 'pending';
+  const g = goalsOf(m); // 90 minutes, as bookmakers settle
+  if (!g) return 'pending';
+  const h = g.h, a = g.a;
+  const ht = m.score?.halfTime;
   const s = leg.settle;
-  const ou = (val) => (s.side === 'over' ? val > s.line : val < s.line) ? 'won' : 'lost';
+  const ou = (val) => ((s.side === 'over' ? val > s.line : val < s.line) ? 'won' : 'lost');
 
   switch (s.kind) {
     case '1x2': return (s.side === 'home' ? h > a : a > h) ? 'won' : 'lost';
@@ -26,11 +26,10 @@ export function gradeLeg(leg, fx, corners) {
       if (h === a) return 'void';
       return (s.side === 'home' ? h > a : a > h) ? 'won' : 'lost';
     case 'ou': return ou(h + a);
-    case 'fh_ou': return ou(ht.home + ht.away);
+    case 'fh_ou': return ht?.home == null ? 'pending' : ou(ht.home + ht.away);
     case 'home_ou': return ou(h);
     case 'away_ou': return ou(a);
     case 'btts': return ((h > 0 && a > 0) === (s.side === 'yes')) ? 'won' : 'lost';
-    case 'corners_ou': return corners == null ? 'pending' : ou(corners);
     default: return 'pending';
   }
 }

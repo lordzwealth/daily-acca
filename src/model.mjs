@@ -1,5 +1,5 @@
-// Goals model: venue-specific Poisson ratings from the league table, blended with recent form,
-// adjusted for injuries and referee tendency, with a Dixon-Coles low-score correction.
+// Goals model: venue-specific Poisson ratings from the season's results, blended with recent form
+// and referee tendency, with a Dixon-Coles low-score correction. Also fits the bookmakers' implied goals.
 
 const MAXG = 10;
 const RHO = -0.08;
@@ -77,59 +77,60 @@ export function teamRatings(row, avg) {
 }
 
 /**
- * Expected goals for a fixture.
- * ctx: { table, homeRow, awayRow, pred (API predictions object), injuries:{home,away}, refFactor }
+ * Model expected goals from the season table (venue-specific ratings + last-5 form + referee).
+ * ctx: { table, homeRow, awayRow, refFactor }
  */
 export function expectedGoals(ctx) {
-  const notes = [];
-  let lh, la;
+  if (!ctx.homeRow || !ctx.awayRow || !ctx.table) return null;
+  const avg = leagueAverages(ctx.table);
+  const H = teamRatings(ctx.homeRow, avg);
+  const A = teamRatings(ctx.awayRow, avg);
+  let lh = avg.home * H.attHome * A.defAway;
+  let la = avg.away * A.attAway * H.defHome;
 
-  if (ctx.homeRow && ctx.awayRow && ctx.table) {
-    const avg = leagueAverages(ctx.table);
-    const H = teamRatings(ctx.homeRow, avg);
-    const A = teamRatings(ctx.awayRow, avg);
-    lh = avg.home * H.attHome * A.defAway;
-    la = avg.away * A.attAway * H.defHome;
+  const h5 = ctx.homeRow.last5, a5 = ctx.awayRow.last5;
+  if (h5?.n >= 3 && a5?.n >= 3) {
+    const rh = Math.sqrt(Math.max(h5.for, 0.2) * Math.max(a5.against, 0.2)) * (avg.home / avg.all);
+    const ra = Math.sqrt(Math.max(a5.for, 0.2) * Math.max(h5.against, 0.2)) * (avg.away / avg.all);
+    lh = 0.75 * lh + 0.25 * rh;
+    la = 0.75 * la + 0.25 * ra;
+  }
+  if (ctx.refFactor) { lh *= ctx.refFactor; la *= ctx.refFactor; }
+  return { lh: clampL(lh), la: clampL(la) };
+}
 
-    // Recent form (last 5) from predictions endpoint
-    const h5 = ctx.pred?.teams?.home?.last_5?.goals;
-    const a5 = ctx.pred?.teams?.away?.last_5?.goals;
-    if (h5 && a5) {
-      const hf = +h5.for.average, ha = +h5.against.average, af = +a5.for.average, aa = +a5.against.average;
-      if ([hf, ha, af, aa].every((x) => isFinite(x))) {
-        const homeAdj = avg.home / avg.all, awayAdj = avg.away / avg.all;
-        const rh = Math.sqrt(Math.max(hf, 0.2) * Math.max(aa, 0.2)) * homeAdj;
-        const ra = Math.sqrt(Math.max(af, 0.2) * Math.max(ha, 0.2)) * awayAdj;
-        lh = 0.75 * lh + 0.25 * rh;
-        la = 0.75 * la + 0.25 * ra;
+const clampL = (x) => Math.min(Math.max(x, 0.15), 4.5);
+
+/**
+ * Find the goal expectancies the bookmakers are implying.
+ * f: { home, draw, away } margin-free probabilities; ou: { line, over } optional
+ */
+export function fitMarket(f, ou) {
+  let best = null;
+  const err = (lh, la) => {
+    const g = scoreGrid(lh, la);
+    const ph = sumGrid(g, (h, a) => h > a), pa = sumGrid(g, (h, a) => h < a);
+    let e = (ph - f.home) ** 2 + (pa - f.away) ** 2;
+    if (ou) e += (sumGrid(g, (h, a) => h + a > ou.line) - ou.over) ** 2;
+    return e;
+  };
+  for (let lh = 0.2; lh <= 4.01; lh += 0.1) for (let la = 0.2; la <= 4.01; la += 0.1) {
+    const e = err(lh, la);
+    if (!best || e < best.e) best = { lh, la, e };
+  }
+  for (let step = 0.05; step >= 0.0125; step /= 2) { // refine
+    let improved = true;
+    while (improved) {
+      improved = false;
+      for (const [dh, da] of [[step, 0], [-step, 0], [0, step], [0, -step]]) {
+        const lh = best.lh + dh, la = best.la + da;
+        if (lh < 0.1 || la < 0.1) continue;
+        const e = err(lh, la);
+        if (e < best.e) { best = { lh, la, e }; improved = true; }
       }
     }
-  } else if (ctx.pred?.teams?.home?.league?.goals) {
-    // No table (e.g. cup) – fall back to season goal averages from predictions
-    const H = ctx.pred.teams.home.league.goals, A = ctx.pred.teams.away.league.goals;
-    const hf = +H.for.average.home, aa = +A.against.average.away, af = +A.for.average.away, ha = +H.against.average.home;
-    if (![hf, aa, af, ha].every((x) => isFinite(x) && x > 0)) return null;
-    lh = Math.sqrt(hf * aa);
-    la = Math.sqrt(af * ha);
-    notes.push('no league table – used season averages');
-  } else {
-    return null;
   }
-
-  // Injuries: each confirmed absentee trims own attack, boosts opponent slightly (capped)
-  const ih = ctx.injuries?.home || 0, ia = ctx.injuries?.away || 0;
-  lh *= (1 - Math.min(0.08, 0.015 * ih)) * (1 + Math.min(0.06, 0.01 * ia));
-  la *= (1 - Math.min(0.08, 0.015 * ia)) * (1 + Math.min(0.06, 0.01 * ih));
-
-  // Referee tendency (builds up over time from settled games)
-  if (ctx.refFactor && ctx.refFactor !== 1) {
-    lh *= ctx.refFactor;
-    la *= ctx.refFactor;
-  }
-
-  lh = Math.min(Math.max(lh, 0.15), 4.5);
-  la = Math.min(Math.max(la, 0.15), 4.5);
-  return { lh, la, notes };
+  return { lh: best.lh, la: best.la, fitError: Math.sqrt(best.e) };
 }
 
 // Probability of every supported market from the score grid

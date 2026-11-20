@@ -1,89 +1,64 @@
 # Daily Acca
 
-Every morning at **07:00 Lagos time**, a GitHub Action:
+Every morning, a GitHub Action:
 
-1. Settles yesterday's slip and updates your running record.
-2. Pulls today's fixtures in ~33 leagues from API-Football.
-3. Gets the bookmaker odds, league tables, recent form, injuries, head-to-head records and referee data.
-4. Runs a goals model (Poisson ratings with home/away splits, recent form, injury and referee adjustments) and checks how much each team has to play for.
-5. Builds a **2–4 game slip with total odds of 1.70–2.00**, picking the combination with the highest estimated chance. It also builds a backup slip from different games.
-6. Sends the slip to your **Telegram** and saves it to `data/`. The **Vercel dashboard** shows it along with your full history.
+1. Settles the open slips and updates your running record.
+2. Pulls today's fixtures from **football-data.org** (free) for the Premier League, Championship, La Liga, Serie A, Bundesliga, Ligue 1, Eredivisie, Primeira Liga, Brasileirão and the Champions League.
+3. Builds each league's table (overall, home and away), recent form, head-to-head results this season and referee goal averages from this season's results.
+4. Gets match-result and over/under prices from **The Odds API** (free), using the median across bookmakers.
+5. Works out the goals the bookmakers expect, blends that with our own goals model, and prices every market: double chance, draw no bet, over/under, team goals, first-half goals and both teams to score.
+6. Builds a **2–4 game slip at about 1.70–2.00 total odds**, picking the combination with the highest estimated chance, plus a backup slip from different games.
+7. Sends the slip to **Telegram** and the **dashboard**.
 
-If nothing passes the safety filters, it sends "no slip today" instead of forcing one.
+If nothing passes the safety filters, it sends "no slip today".
 
----
+## Keys (GitHub → Settings → Secrets and variables → Actions → Secrets)
 
-## Setup (about 15 minutes, all in the browser)
-
-### 1. API-Football key
-- Sign up at **dashboard.api-football.com** (free, no card needed).
-- Go to **Account → My Access** and copy your API key.
-
-### 2. Telegram bot
-- In Telegram, open **@BotFather** and send `/newbot`. Follow the prompts and copy the **token** it gives you.
-- Open your new bot and send it any message, e.g. "hi".
-- In a browser, visit `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates` and copy the number after `"chat":{"id":`. That's your **chat ID**.
-
-### 3. GitHub secrets
-In this repo, go to **Settings → Secrets and variables → Actions**.
-
-**Secrets** tab → *New repository secret*:
-
-| Name | Value |
+| Secret | Where to get it |
 |---|---|
-| `API_FOOTBALL_KEY` | your API-Football key |
-| `TELEGRAM_BOT_TOKEN` | your bot token |
-| `TELEGRAM_CHAT_ID` | your chat ID |
+| `FOOTBALL_DATA_KEY` | Register at football-data.org (free). The token is emailed to you. |
+| `ODDS_API_KEY` | Sign up at the-odds-api.com and choose the free plan (500 credits a month). |
+| `TELEGRAM_BOT_TOKEN` | Your bot from @BotFather |
+| `TELEGRAM_CHAT_ID` | Your chat ID |
 
-### 4. First run
-Go to **Actions → Daily Acca → Run workflow**. About 5–8 minutes later the slip arrives on Telegram, and the run commits `data/latest.json`.
+`API_FOOTBALL_KEY` is no longer used. You can delete it.
 
-### 5. Dashboard on Vercel
-- In Vercel: **Add New → Project →** import this repo **→ Deploy**. No settings to change.
-- Copy the site URL. Back in GitHub, under **Settings → Secrets and variables → Actions → Variables**, add `DASHBOARD_URL` = that URL. Telegram messages will then link to the dashboard.
+## Daily trigger
+cron-job.org POSTs to `https://api.github.com/repos/<you>/daily-acca/actions/workflows/daily.yml/dispatches` at 06:05 Lagos time, with the body `{"ref":"main"}`. GitHub's own schedule is a backup and skips the run if today's slip already exists.
 
----
-
-## Data plan
-
-The free API-Football plan allows **100 requests a day at 10 a minute**. A daily run uses about 35–90 of those.
-
-- If the free plan won't serve the current season, the bot sends a ⚠️ Telegram message saying so.
-- The **Pro plan ($19/month, 7,500 requests a day)** scans more games and switches on **corner markets**. To use it, add these GitHub *Variables*:
-
-| Variable | Free | Pro |
-|---|---|---|
-| `MAX_REQUESTS` | 90 | 1500 |
-| `RATE_PER_MIN` | 10 | 250 |
-| `SHORTLIST` | 14 | 40 |
-| `CORNERS_DEPTH` | 0 | 5 |
-
-## Tuning (optional variables)
-- `MIN_TOTAL_ODDS` and `MAX_TOTAL_ODDS`: the slip's odds band (default 1.70–2.00).
-- `MIN_LEG_PROB`: the minimum estimated chance for each game (default 0.78).
-- `MIN_LEG_ODDS` and `MAX_LEG_ODDS`: the odds range for each game (default 1.12–1.55).
-- The list of leagues is in `src/config.mjs`.
+## About the odds
+- **Match result and over/under 2.5** use real bookmaker prices.
+- **Every other market** (double chance, draw no bet, over 1.5, team goals and so on) gets an **estimated price, marked ≈**. The free odds feed doesn't carry these markets, so the price is worked out from the real markets with a typical 6% bookmaker margin. Check your own bookmaker's price, and skip a leg if it's offered well below the ≈ price.
+- Each league scanned costs 2 credits. A typical month uses about 200–350 of the 500 free credits. The bot warns you on Telegram when fewer than 60 are left.
 
 ## How the chance figure is worked out
-- Each leg's chance = 60% the bookmaker's margin-free price + 40% our model. It is **capped at 3 points above the bookmaker**, because the legs the model likes most tend to be the ones where it's over-confident.
+- Each leg's chance = 60% the bookmakers' margin-free probability + 40% our model. It is **capped at 3 points above the bookmakers**.
 - A leg is dropped if:
-  - our model is more than 10 points *less* confident than the bookmaker,
-  - either team has played fewer than 5 league games, or
+  - our model is clearly less confident than the bookmakers,
+  - either team has played fewer than 5 games, or
   - it backs a team with nothing to play for against an opponent fighting for something.
-- Each slip can include at most one draw-no-bet leg and at most two legs from the same league.
-- The slip's chance is the legs' chances multiplied together. The dashboard shows **predicted vs actual hit rate**. After 30 or more slips, that comparison tells you whether the numbers can be trusted.
+- Each slip can include at most one draw-no-bet leg and at most three legs from one league.
+- The dashboard compares predicted and actual hit rate. After 30 or more slips, that comparison tells you whether the numbers can be trusted.
 
 ## Limits
-- **Referee data** builds up from games the bot settles. A referee needs about 6 logged games before they affect predictions.
-- **Tactics** are covered only indirectly, through goal patterns, form and home/away splits. No free data source rates tactics.
-- **Corners** need the Pro plan.
-- Expect to lose some days. At these odds, a good model wins roughly 55–65% of slips.
+- There are **no injury or corner data**; the free sources don't provide them.
+- **Tactics** are covered only indirectly, through goal patterns and home/away form.
+- Coverage is 10 competitions, so midweek days often have no slip.
+- At these odds, expect to lose some days. A good model wins roughly 55–65% of slips.
+
+## Tuning (optional Variables)
+- `MIN_TOTAL_ODDS` and `MAX_TOTAL_ODDS`: the slip's odds band.
+- `MIN_LEG_PROB`: the minimum estimated chance for each game.
+- `MIN_LEG_ODDS` and `MAX_LEG_ODDS`: the odds range for each game.
+- `ASSUMED_MARGIN`: the margin used for ≈ prices (default 0.06).
 
 ## Files
 `src/run.mjs` runs the daily pipeline. The other files in `src/`:
-- `model.mjs`: goals model
-- `markets.mjs`: reads the odds
-- `context.mjs`: table position, referees, injuries, corners
+- `sources.mjs`: the API clients
+- `teams.mjs`: matches team names between the two sources
+- `context.mjs`: tables, form, referees, head-to-head
+- `model.mjs`: goals model and the bookmakers' implied goals
+- `markets.mjs`: prices each market
 - `builder.mjs`: builds the slip
 - `settle.mjs`: grades results
 - `telegram.mjs`: sends the message

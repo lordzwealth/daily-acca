@@ -1,4 +1,4 @@
-// All tunable settings live here. Most can be overridden with GitHub Action env vars.
+// All tunable settings live here. Most can be overridden with GitHub Action variables.
 const num = (v, d) => (v === undefined || v === '' || isNaN(Number(v)) ? d : Number(v));
 
 export const CONFIG = {
@@ -13,34 +13,32 @@ export const CONFIG = {
   // Leg filters
   minLegOdds: num(process.env.MIN_LEG_ODDS, 1.12),
   maxLegOdds: num(process.env.MAX_LEG_ODDS, 1.55),
-  minLegProb: num(process.env.MIN_LEG_PROB, 0.78),   // our blended probability per leg
-  minEdge: num(process.env.MIN_EDGE, -0.03),          // p*odds-1; small negative allowed (bookie margin)
-  maxModelMarketGap: 0.10,                            // skip legs where our model and bookie disagree a lot
+  minLegProb: num(process.env.MIN_LEG_PROB, 0.78),
+  minEdge: num(process.env.MIN_EDGE, -0.03),
+  maxModelMarketGap: 0.10,
   minGamesPlayed: 5,
-  maxLegsPerLeague: 2,
+  maxLegsPerLeague: 3,
 
-  // Probability blend: bookmaker prices are very sharp, so they carry the most weight
+  // Blend: bookmaker prices are sharp, so they carry most of the weight
   marketWeight: 0.6,
+  // Typical bookmaker margin, used to estimate prices for markets the free odds feed doesn't carry
+  assumedMargin: num(process.env.ASSUMED_MARGIN, 0.06),
 
-  // API budget (free plan = 100/day, 10/min). Pro plan: set MAX_REQUESTS=1500, RATE_PER_MIN=250
-  maxRequests: num(process.env.MAX_REQUESTS, 90),
-  ratePerMinute: num(process.env.RATE_PER_MIN, 10),
-  shortlistSize: num(process.env.SHORTLIST, 14),     // fixtures that get the deep dive
-  cornersDepth: num(process.env.CORNERS_DEPTH, 0),   // last-N matches per team for corners (0 = off; needs paid plan)
+  // The Odds API free plan = 500 credits/month. Each league call costs 2 (h2h + totals, 1 region).
+  oddsRegion: process.env.ODDS_REGION || 'eu',
+  minOddsCreditsLeft: 4,
 
-  bookmakerId: num(process.env.BOOKMAKER_ID, 8),     // 8 = Bet365 in API-Football
-
-  // Competitions scanned (API-Football league IDs)
-  leagues: {
-    39: 'Premier League', 40: 'Championship', 41: 'League One',
-    140: 'La Liga', 141: 'La Liga 2', 135: 'Serie A', 136: 'Serie B',
-    78: 'Bundesliga', 79: '2. Bundesliga', 61: 'Ligue 1', 62: 'Ligue 2',
-    88: 'Eredivisie', 94: 'Primeira Liga', 144: 'Belgian Pro League',
-    203: 'Süper Lig', 179: 'Scottish Premiership', 207: 'Swiss Super League',
-    218: 'Austrian Bundesliga', 197: 'Greek Super League', 119: 'Danish Superliga',
-    113: 'Allsvenskan', 103: 'Eliteserien', 2: 'Champions League',
-    3: 'Europa League', 848: 'Conference League', 253: 'MLS', 262: 'Liga MX',
-    71: 'Brasileirão', 128: 'Argentina Liga Profesional', 307: 'Saudi Pro League',
-    98: 'J1 League', 292: 'K League 1', 188: 'A-League',
+  // football-data.org free competitions → The Odds API sport key, relegation places
+  competitions: {
+    PL: { name: 'Premier League', odds: 'soccer_epl', releg: 3 },
+    ELC: { name: 'Championship', odds: 'soccer_efl_champ', releg: 3 },
+    PD: { name: 'La Liga', odds: 'soccer_spain_la_liga', releg: 3 },
+    SA: { name: 'Serie A', odds: 'soccer_italy_serie_a', releg: 3 },
+    BL1: { name: 'Bundesliga', odds: 'soccer_germany_bundesliga', releg: 3 },
+    FL1: { name: 'Ligue 1', odds: 'soccer_france_ligue_one', releg: 3 },
+    DED: { name: 'Eredivisie', odds: 'soccer_netherlands_eredivisie', releg: 3 },
+    PPL: { name: 'Primeira Liga', odds: 'soccer_portugal_primeira_liga', releg: 3 },
+    BSA: { name: 'Brasileirão', odds: 'soccer_brazil_campeonato', releg: 4 },
+    CL: { name: 'Champions League', odds: 'soccer_uefa_champs_league', releg: 0, cup: true },
   },
 };
