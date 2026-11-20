@@ -1,11 +1,35 @@
 {
  "date": "2026-11-20",
- "generatedAt": "2026-11-20T09:38:17.865Z",
- "requestsUsed": 15,
- "scanned": 22,
- "analysed": 0,
+ "generatedAt": "2026-11-20T10:12:27.867Z",
+ "requests": {
+  "footballData": 4,
+  "odds": 3,
+  "oddsCreditsLeft": 494
+ },
+ "scanned": 3,
+ "analysed": 3,
  "slips": [],
- "topLegs": [],
+ "topLegs": [
+  {
+   "fixtureId": 564748,
+   "label": "Under 4.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "under",
+    "line": 4.5
+   },
+   "fair": 0.8277127812798318,
+   "model": 0.9419126058685934,
+   "odd": 1.14,
+   "estimated": true,
+   "p": 0.8577127812798319,
+   "edge": -0.022207429340991736,
+   "gap": 0.11419982458876154,
+   "match": "Athletic v Espanyol",
+   "league": "La Liga",
+   "kickoff": "2026-11-20T20:00:00Z"
+  }
+ ],
  "notice": null,
  "stats": {
   "settled": 0,
