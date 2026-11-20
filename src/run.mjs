@@ -80,7 +80,7 @@ async function main() {
     if (api.budgetLeft() < CONFIG.shortlistSize * 2 + 4) { notice = 'API budget limited the scan to the busiest leagues.'; break; }
     const season = byLeague[lid][0].league.season;
     try {
-      const o = await getAll(api, 'odds', { league: lid, season, date: today, bookmaker: CONFIG.bookmakerId }, 3);
+      const o = await getAll(api, 'odds', { league: lid, season, date: today }, 3);
       for (const e of o) odds[e.fixture.id] = extractBets(e, CONFIG.bookmakerId);
       if (o.length) tables[lid] = flattenTable((await api.get('standings', { league: lid, season })).response);
     } catch (e) {
