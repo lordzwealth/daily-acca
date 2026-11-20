@@ -4,13 +4,55 @@
    "games": 1,
    "goals": 1,
    "homeWins": 0
+  },
+  "Alex Gomes Stefano": {
+   "games": 1,
+   "goals": 2,
+   "homeWins": 1
+  },
+  "Anderson Daronco": {
+   "games": 1,
+   "goals": 3,
+   "homeWins": 1
+  },
+  "Rafael Rodrigo Klein": {
+   "games": 1,
+   "goals": 3,
+   "homeWins": 1
+  },
+  "W. Sampaio": {
+   "games": 1,
+   "goals": 4,
+   "homeWins": 1
+  },
+  "D. Lacerda": {
+   "games": 1,
+   "goals": 0,
+   "homeWins": 0
+  },
+  "Paulo Cesar Zanovelli da Silva": {
+   "games": 1,
+   "goals": 3,
+   "homeWins": 1
+  },
+  "Ramon Abatti Abel": {
+   "games": 1,
+   "goals": 3,
+   "homeWins": 1
   }
  },
  "totals": {
-  "games": 1,
-  "goals": 1
+  "games": 8,
+  "goals": 19
  },
  "seen": [
-  1492451
+  1492451,
+  1492456,
+  1492452,
+  1492453,
+  1492450,
+  1492454,
+  1492458,
+  1492459
  ]
 }
