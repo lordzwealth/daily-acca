@@ -1,33 +1,477 @@
 {
- "date": "2026-11-20",
- "generatedAt": "2026-11-20T10:12:27.867Z",
+ "date": "2026-11-21",
+ "generatedAt": "2026-11-21T05:06:04.840Z",
  "requests": {
-  "footballData": 4,
-  "odds": 3,
-  "oddsCreditsLeft": 494
+  "footballData": 9,
+  "odds": 8,
+  "oddsCreditsLeft": 478
  },
- "scanned": 3,
- "analysed": 3,
- "slips": [],
+ "scanned": 44,
+ "analysed": 44,
+ "slips": [
+  {
+   "legs": [
+    {
+     "fixtureId": 558833,
+     "label": "PSV draw no bet",
+     "settle": {
+      "kind": "dnb",
+      "side": "away"
+     },
+     "fair": 0.7697753154816865,
+     "model": 0.8636246048438101,
+     "odd": 1.33,
+     "estimated": true,
+     "note": "refund if draw",
+     "p": 0.7997753154816866,
+     "edge": 0.06370116959064309,
+     "gap": 0.09384928936212356,
+     "ctx": {
+      "match": "NEC v PSV",
+      "league": "Eredivisie",
+      "kickoff": "2026-11-21T15:30:00Z",
+      "referee": null,
+      "xg": [
+       1.26,
+       2.88
+      ],
+      "marketXg": [
+       1.51,
+       2.36
+      ],
+      "books": 22,
+      "why": [
+       "11th (DDDLW) v 1st (WLDWW)",
+       "xG bookies 1.51–2.36, model 1.26–2.88",
+       "NEC home: 9-12 in 6; PSV away: 19-10 in 6",
+       "NEC relegation battle; PSV title race"
+      ]
+     }
+    },
+    {
+     "fixtureId": 560651,
+     "label": "Under 4.5 goals",
+     "settle": {
+      "kind": "ou",
+      "side": "under",
+      "line": 4.5
+     },
+     "fair": 0.8256604062801485,
+     "model": 0.9608604556170093,
+     "odd": 1.14,
+     "estimated": true,
+     "p": 0.8556604062801485,
+     "edge": -0.024547136840630812,
+     "gap": 0.1352000493368608,
+     "ctx": {
+      "match": "Newcastle v Arsenal",
+      "league": "Premier League",
+      "kickoff": "2026-11-21T17:30:00Z",
+      "referee": null,
+      "xg": [
+       0.55,
+       1.28
+      ],
+      "marketXg": [
+       0.94,
+       2
+      ],
+      "books": 25,
+      "why": [
+       "12th (LLWLD) v 1st (WWWWW)",
+       "xG bookies 0.94–2.00, model 0.55–1.28",
+       "Newcastle home: 6-7 in 5; Arsenal away: 5-3 in 5",
+       "Arsenal title race"
+      ]
+     }
+    },
+    {
+     "fixtureId": 559621,
+     "label": "Over 1.5 goals",
+     "settle": {
+      "kind": "ou",
+      "side": "over",
+      "line": 1.5
+     },
+     "fair": 0.8324081673755859,
+     "model": 0.9012514210713664,
+     "odd": 1.13,
+     "estimated": true,
+     "p": 0.8599454688538981,
+     "edge": -0.02826162019509526,
+     "gap": 0.06884325369578048,
+     "ctx": {
+      "match": "Monaco v Auxerre",
+      "league": "Ligue 1",
+      "kickoff": "2026-11-21T19:45:00Z",
+      "referee": null,
+      "xg": [
+       2.7,
+       1.14
+      ],
+      "marketXg": [
+       2.26,
+       0.91
+      ],
+      "books": 22,
+      "why": [
+       "7th (DLDLD) v 15th (LWDLL)",
+       "xG bookies 2.26–0.91, model 2.70–1.14",
+       "Monaco home: 7-4 in 4; Auxerre away: 8-18 in 5"
+      ]
+     }
+    }
+   ],
+   "totalOdds": 1.71,
+   "prob": 0.588,
+   "ev": 0.008,
+   "result": "pending",
+   "paidOdds": null
+  },
+  {
+   "legs": [
+    {
+     "fixtureId": 565862,
+     "label": "Dortmund draw no bet",
+     "settle": {
+      "kind": "dnb",
+      "side": "away"
+     },
+     "fair": 0.812871793491427,
+     "model": 0.8298356200401138,
+     "odd": 1.24,
+     "estimated": true,
+     "note": "refund if draw",
+     "p": 0.8196573241109018,
+     "edge": 0.01637508189751813,
+     "gap": 0.016963826548686778,
+     "ctx": {
+      "match": "M'gladbach v Dortmund",
+      "league": "Bundesliga",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "referee": null,
+      "xg": [
+       1.03,
+       2.09
+      ],
+      "marketXg": [
+       1.13,
+       2.14
+      ],
+      "books": 23,
+      "why": [
+       "18th (LLWDL) v 2nd (DDWDW)",
+       "xG bookies 1.13–2.14, model 1.03–2.09",
+       "M'gladbach home: 7-10 in 4; Dortmund away: 6-4 in 4",
+       "M'gladbach in relegation zone; Dortmund title race"
+      ]
+     }
+    },
+    {
+     "fixtureId": 561952,
+     "label": "Under 4.5 goals",
+     "settle": {
+      "kind": "ou",
+      "side": "under",
+      "line": 4.5
+     },
+     "fair": 0.7982153835443724,
+     "model": 0.8632474783944485,
+     "odd": 1.18,
+     "estimated": true,
+     "p": 0.8242282214844028,
+     "edge": -0.02741069864840473,
+     "gap": 0.0650320948500761,
+     "ctx": {
+      "match": "Wolverhampton v Charlton",
+      "league": "Championship",
+      "kickoff": "2026-11-21T15:00:00Z",
+      "referee": null,
+      "xg": [
+       2.15,
+       0.55
+      ],
+      "marketXg": [
+       2.33,
+       0.77
+      ],
+      "books": 22,
+      "why": [
+       "2nd (DWWWD) v 14th (WLLLW)",
+       "xG bookies 2.33–0.77, model 2.15–0.55",
+       "Wolverhampton home: 7-3 in 4; Charlton away: 0-3 in 1",
+       "Wolverhampton title race"
+      ]
+     }
+    },
+    {
+     "fixtureId": 558834,
+     "label": "Heerenveen over 0.5 goals",
+     "settle": {
+      "kind": "away_ou",
+      "side": "over",
+      "line": 0.5
+     },
+     "fair": 0.8079498274863313,
+     "model": 0.9247024091176487,
+     "odd": 1.17,
+     "estimated": true,
+     "p": 0.8379498274863313,
+     "edge": -0.01959870184099244,
+     "gap": 0.11675258163131741,
+     "ctx": {
+      "match": "Groningen v Heerenveen",
+      "league": "Eredivisie",
+      "kickoff": "2026-11-21T20:00:00Z",
+      "referee": null,
+      "xg": [
+       1.8,
+       2.59
+      ],
+      "marketXg": [
+       1.68,
+       1.65
+      ],
+      "books": 22,
+      "why": [
+       "9th (WLDLL) v 6th (LWWWW)",
+       "xG bookies 1.68–1.65, model 1.80–2.59",
+       "Groningen home: 13-14 in 6; Heerenveen away: 11-8 in 5"
+      ]
+     }
+    }
+   ],
+   "totalOdds": 1.71,
+   "prob": 0.566,
+   "ev": -0.031,
+   "result": "pending",
+   "paidOdds": null
+  }
+ ],
  "topLegs": [
   {
-   "fixtureId": 564748,
+   "fixtureId": 561952,
+   "label": "Wolverhampton or Charlton (no draw)",
+   "settle": {
+    "kind": "dc",
+    "side": "ha"
+   },
+   "fair": 0.8204541109316945,
+   "model": 0.8132338154677344,
+   "odd": 1.15,
+   "estimated": true,
+   "p": 0.8175659927461105,
+   "edge": -0.059799108341972995,
+   "gap": -0.00722029546396008,
+   "match": "Wolverhampton v Charlton",
+   "league": "Championship",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 561952,
    "label": "Under 4.5 goals",
    "settle": {
     "kind": "ou",
     "side": "under",
     "line": 4.5
    },
-   "fair": 0.8277127812798318,
-   "model": 0.9419126058685934,
-   "odd": 1.14,
+   "fair": 0.7982153835443724,
+   "model": 0.8632474783944485,
+   "odd": 1.18,
    "estimated": true,
-   "p": 0.8577127812798319,
-   "edge": -0.022207429340991736,
-   "gap": 0.11419982458876154,
-   "match": "Athletic v Espanyol",
-   "league": "La Liga",
-   "kickoff": "2026-11-20T20:00:00Z"
+   "p": 0.8242282214844028,
+   "edge": -0.02741069864840473,
+   "gap": 0.0650320948500761,
+   "match": "Wolverhampton v Charlton",
+   "league": "Championship",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560644,
+   "label": "Aston Villa or draw (double chance)",
+   "settle": {
+    "kind": "dc",
+    "side": "hd"
+   },
+   "fair": 0.7871752349364289,
+   "model": 0.8036924985357933,
+   "odd": 1.2,
+   "estimated": true,
+   "p": 0.7937821403761747,
+   "edge": -0.047461431548590394,
+   "gap": 0.01651726359936434,
+   "match": "Aston Villa v Sunderland",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560644,
+   "label": "Aston Villa draw no bet",
+   "settle": {
+    "kind": "dnb",
+    "side": "home"
+   },
+   "fair": 0.7871752349364289,
+   "model": 0.8036924985357933,
+   "odd": 1.31,
+   "estimated": true,
+   "note": "refund if draw",
+   "p": 0.7937821403761747,
+   "edge": 0.03985460389278894,
+   "gap": 0.01651726359936434,
+   "match": "Aston Villa v Sunderland",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560644,
+   "label": "Over 1.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "over",
+    "line": 1.5
+   },
+   "fair": 0.7940445998200595,
+   "model": 0.8170708056234011,
+   "odd": 1.19,
+   "estimated": true,
+   "p": 0.8032550821413961,
+   "edge": -0.044126452251738724,
+   "gap": 0.023026205803341582,
+   "match": "Aston Villa v Sunderland",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560644,
+   "label": "Aston Villa over 0.5 goals",
+   "settle": {
+    "kind": "home_ou",
+    "side": "over",
+    "line": 0.5
+   },
+   "fair": 0.8387817828224751,
+   "model": 0.8606625144331759,
+   "odd": 1.12,
+   "estimated": true,
+   "p": 0.8475340754667554,
+   "edge": -0.050761835477233896,
+   "gap": 0.02188073161070081,
+   "match": "Aston Villa v Sunderland",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560648,
+   "label": "Tottenham or Ipswich Town (no draw)",
+   "settle": {
+    "kind": "dc",
+    "side": "ha"
+   },
+   "fair": 0.7883053600433135,
+   "model": 0.7686762719388438,
+   "odd": 1.2,
+   "estimated": true,
+   "p": 0.7804537248015256,
+   "edge": -0.0634555302381693,
+   "gap": -0.019629088104469727,
+   "match": "Tottenham v Ipswich Town",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560648,
+   "label": "Over 1.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "over",
+    "line": 1.5
+   },
+   "fair": 0.8211105522548059,
+   "model": 0.8517549119903506,
+   "odd": 1.15,
+   "estimated": true,
+   "p": 0.8333682961490237,
+   "edge": -0.04162645942862275,
+   "gap": 0.03064435973554469,
+   "match": "Tottenham v Ipswich Town",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560642,
+   "label": "Chelsea over 0.5 goals",
+   "settle": {
+    "kind": "home_ou",
+    "side": "over",
+    "line": 0.5
+   },
+   "fair": 0.8055341523420205,
+   "model": 0.785531357894173,
+   "odd": 1.17,
+   "estimated": true,
+   "p": 0.7975330345628815,
+   "edge": -0.06688634956142869,
+   "gap": -0.020002794447847472,
+   "match": "Chelsea v Leeds United",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560647,
+   "label": "Bournemouth or draw (double chance)",
+   "settle": {
+    "kind": "dc",
+    "side": "hd"
+   },
+   "fair": 0.7630893939658636,
+   "model": 0.8194967018156416,
+   "odd": 1.24,
+   "estimated": true,
+   "p": 0.7856523171057748,
+   "edge": -0.025791126788839325,
+   "gap": 0.05640730784977799,
+   "match": "Bournemouth v Nottingham",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560647,
+   "label": "Bournemouth draw no bet",
+   "settle": {
+    "kind": "dnb",
+    "side": "home"
+   },
+   "fair": 0.7630893939658636,
+   "model": 0.8194967018156416,
+   "odd": 1.39,
+   "estimated": true,
+   "note": "refund if draw",
+   "p": 0.7856523171057748,
+   "edge": 0.09205672077702687,
+   "gap": 0.05640730784977799,
+   "match": "Bournemouth v Nottingham",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
+  },
+  {
+   "fixtureId": 560647,
+   "label": "Bournemouth over 0.5 goals",
+   "settle": {
+    "kind": "home_ou",
+    "side": "over",
+    "line": 0.5
+   },
+   "fair": 0.8006112607195529,
+   "model": 0.827447797282995,
+   "odd": 1.18,
+   "estimated": true,
+   "p": 0.8113458753449297,
+   "edge": -0.042611867092982925,
+   "gap": 0.026836536563442093,
+   "match": "Bournemouth v Nottingham",
+   "league": "Premier League",
+   "kickoff": "2026-11-21T15:00:00Z"
   }
  ],
  "notice": null,
@@ -41,7 +485,7 @@
   "streak": 0
  },
  "yesterday": {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "slips": []
  }
 }
