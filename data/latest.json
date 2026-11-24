@@ -1,513 +1,500 @@
 {
- "date": "2026-11-23",
- "generatedAt": "2026-11-23T05:05:47.318Z",
+ "date": "2026-11-24",
+ "generatedAt": "2026-11-24T05:05:45.338Z",
  "requests": {
-  "footballData": 6,
-  "odds": 4,
-  "oddsCreditsLeft": 454
+  "footballData": 5,
+  "odds": 3,
+  "oddsCreditsLeft": 448
  },
- "scanned": 4,
- "analysed": 4,
+ "scanned": 18,
+ "analysed": 17,
  "slips": [
   {
    "legs": [
     {
-     "fixtureId": 558519,
+     "fixtureId": 561955,
      "label": "Over 1.5 goals",
      "settle": {
       "kind": "ou",
       "side": "over",
       "line": 1.5
      },
-     "fair": 0.8202570982484323,
-     "model": 0.9412131891611903,
-     "odd": 1.15,
+     "fair": 0.7862437805027946,
+     "model": 0.8917071846428993,
+     "odd": 1.2,
      "estimated": true,
-     "p": 0.8502570982484323,
-     "edge": -0.02220433701430291,
-     "gap": 0.12095609091275805,
+     "p": 0.8162437805027947,
+     "edge": -0.02050746339664644,
+     "gap": 0.10546340414010469,
      "ctx": {
-      "match": "Monza v Fiorentina",
-      "league": "Serie A",
-      "kickoff": "2026-11-23T19:45:00Z",
+      "match": "Portsmouth v West Ham",
+      "league": "Championship",
+      "kickoff": "2026-11-24T19:45:00Z",
       "referee": null,
       "xg": [
-       2.3,
-       2.15
-      ],
-      "marketXg": [
-       1.28,
-       1.8
-      ],
-      "books": 24,
-      "why": [
-       "18th (WLLLL) v 15th (LLDWD)",
-       "xG bookies 1.28–1.80, model 2.30–2.15",
-       "Monza home: 9-9 in 5; Fiorentina away: 10-12 in 5",
-       "Monza in relegation zone"
-      ]
-     }
-    },
-    {
-     "fixtureId": 564757,
-     "label": "Over 1.5 goals",
-     "settle": {
-      "kind": "ou",
-      "side": "over",
-      "line": 1.5
-     },
-     "fair": 0.7984351500335162,
-     "model": 0.8597324453189331,
-     "odd": 1.18,
-     "estimated": true,
-     "p": 0.8229540681476829,
-     "edge": -0.028914199585734268,
-     "gap": 0.06129729528541694,
-     "ctx": {
-      "match": "Levante v Elche",
-      "league": "La Liga",
-      "kickoff": "2026-11-23T20:00:00Z",
-      "referee": null,
-      "xg": [
-       1.52,
-       1.87
-      ],
-      "marketXg": [
-       1.63,
+       2.42,
        1.3
       ],
-      "books": 20,
+      "marketXg": [
+       1.11,
+       1.74
+      ],
+      "books": 22,
       "why": [
-       "18th (DWLLD) v 19th (DDWLL)",
-       "xG bookies 1.63–1.30, model 1.52–1.87",
-       "Levante home: 13-12 in 5; Elche away: 10-6 in 6",
-       "Levante in relegation zone; Elche in relegation zone"
+       "11th (WDWLD) v 24th (LLDLD)",
+       "xG bookies 1.11–1.74, model 2.42–1.30",
+       "Portsmouth home: 6-4 in 3; West Ham away: 4-5 in 2"
       ]
      }
     },
     {
-     "fixtureId": 555097,
-     "label": "Internacional draw no bet",
+     "fixtureId": 561956,
+     "label": "Sheffield Utd over 0.5 goals",
      "settle": {
-      "kind": "dnb",
-      "side": "home"
+      "kind": "home_ou",
+      "side": "over",
+      "line": 0.5
      },
-     "fair": 0.8095507525178227,
-     "model": 0.8516965735844815,
-     "odd": 1.26,
+     "fair": 0.7740630929498746,
+     "model": 0.8041743672235584,
+     "odd": 1.22,
      "estimated": true,
-     "note": "refund if draw",
-     "p": 0.8264090809444862,
-     "edge": 0.04127544199005251,
-     "gap": 0.04214582106665876,
+     "p": 0.7861076026593481,
+     "edge": -0.0409487247555953,
+     "gap": 0.030111274273683764,
      "ctx": {
-      "match": "Internacional v Vitória",
-      "league": "Brasileirão",
-      "kickoff": "2026-11-23T22:30:00Z",
+      "match": "Sheffield Utd v Southampton",
+      "league": "Championship",
+      "kickoff": "2026-11-24T19:45:00Z",
       "referee": null,
       "xg": [
-       1.67,
-       0.71
+       1.63,
+       0.9
       ],
       "marketXg": [
-       1.81,
-       0.96
+       1.49,
+       1.46
+      ],
+      "books": 22,
+      "why": [
+       "7th (DWWLW) v 6th (WWDLW)",
+       "xG bookies 1.49–1.46, model 1.63–0.90",
+       "Sheffield Utd home: 6-1 in 3; Southampton away: 4-4 in 3"
+      ]
+     }
+    },
+    {
+     "fixtureId": 555102,
+     "label": "Palmeiras over 0.5 goals",
+     "settle": {
+      "kind": "away_ou",
+      "side": "over",
+      "line": 0.5
+     },
+     "fair": 0.8079498274863309,
+     "model": 0.922780794576742,
+     "odd": 1.17,
+     "estimated": true,
+     "p": 0.837949827486331,
+     "edge": -0.019598701840992883,
+     "gap": 0.11483096709041107,
+     "ctx": {
+      "match": "Chapecoense v Palmeiras",
+      "league": "Brasileirão",
+      "kickoff": "2026-11-24T21:00:00Z",
+      "referee": null,
+      "xg": [
+       0.65,
+       2.56
+      ],
+      "marketXg": [
+       1.23,
+       1.65
       ],
       "books": 24,
       "why": [
-       "17th (LWLWL) v 15th (DDLLW)",
-       "xG bookies 1.81–0.96, model 1.67–0.71",
-       "Internacional home: 22-17 in 17; Vitória away: 12-35 in 17",
-       "Internacional in relegation zone; Vitória relegation battle",
-       "met this season: 2-0"
+       "20th (LLLLL) v 2nd (WDWLD)",
+       "xG bookies 1.23–1.65, model 0.65–2.56",
+       "Chapecoense home: 23-40 in 18; Palmeiras away: 27-14 in 18",
+       "Chapecoense in relegation zone; Palmeiras title race",
+       "met this season: 1-0"
       ]
      }
     }
    ],
    "totalOdds": 1.71,
-   "prob": 0.578,
-   "ev": -0.011,
+   "prob": 0.538,
+   "ev": -0.079,
    "result": "pending",
    "paidOdds": null
   }
  ],
  "topLegs": [
   {
-   "fixtureId": 558519,
+   "fixtureId": 561953,
+   "label": "Cardiff or Preston NE (no draw)",
+   "settle": {
+    "kind": "dc",
+    "side": "ha"
+   },
+   "fair": 0.7928758423705162,
+   "model": 0.7869453118248542,
+   "odd": 1.19,
+   "estimated": true,
+   "p": 0.7905036301522514,
+   "edge": -0.05930068011882084,
+   "gap": -0.0059305305456620605,
+   "match": "Cardiff v Preston NE",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
+  },
+  {
+   "fixtureId": 561955,
    "label": "Over 1.5 goals",
    "settle": {
     "kind": "ou",
     "side": "over",
     "line": 1.5
    },
-   "fair": 0.8202570982484323,
-   "model": 0.9412131891611903,
-   "odd": 1.15,
+   "fair": 0.7862437805027946,
+   "model": 0.8917071846428993,
+   "odd": 1.2,
    "estimated": true,
-   "p": 0.8502570982484323,
-   "edge": -0.02220433701430291,
-   "gap": 0.12095609091275805,
-   "match": "Monza v Fiorentina",
-   "league": "Serie A",
-   "kickoff": "2026-11-23T19:45:00Z"
+   "p": 0.8162437805027947,
+   "edge": -0.02050746339664644,
+   "gap": 0.10546340414010469,
+   "match": "Portsmouth v West Ham",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
   },
   {
-   "fixtureId": 558519,
-   "label": "Fiorentina over 0.5 goals",
+   "fixtureId": 561954,
+   "label": "Middlesbrough or Swansea (no draw)",
    "settle": {
-    "kind": "away_ou",
-    "side": "over",
-    "line": 0.5
+    "kind": "dc",
+    "side": "ha"
    },
-   "fair": 0.8347005953890686,
-   "model": 0.8835394368029443,
-   "odd": 1.13,
-   "estimated": true,
-   "p": 0.8542361319546188,
-   "edge": -0.0347131708912809,
-   "gap": 0.04883884141387573,
-   "match": "Monza v Fiorentina",
-   "league": "Serie A",
-   "kickoff": "2026-11-23T19:45:00Z"
-  },
-  {
-   "fixtureId": 564757,
-   "label": "Over 1.5 goals",
-   "settle": {
-    "kind": "ou",
-    "side": "over",
-    "line": 1.5
-   },
-   "fair": 0.7984351500335162,
-   "model": 0.8597324453189331,
+   "fair": 0.8000223989248515,
+   "model": 0.8837234759943492,
    "odd": 1.18,
    "estimated": true,
-   "p": 0.8229540681476829,
-   "edge": -0.028914199585734268,
-   "gap": 0.06129729528541694,
-   "match": "Levante v Elche",
-   "league": "La Liga",
-   "kickoff": "2026-11-23T20:00:00Z"
+   "p": 0.8300223989248515,
+   "edge": -0.020573569268675262,
+   "gap": 0.0837010770694977,
+   "match": "Middlesbrough v Swansea",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
   },
   {
-   "fixtureId": 564757,
-   "label": "Levante over 0.5 goals",
+   "fixtureId": 561954,
+   "label": "Middlesbrough draw no bet",
+   "settle": {
+    "kind": "dnb",
+    "side": "home"
+   },
+   "fair": 0.8492104378989808,
+   "model": 0.9603627130973992,
+   "odd": 1.16,
+   "estimated": true,
+   "note": "refund if draw",
+   "p": 0.8792104378989808,
+   "edge": 0.019884107962817588,
+   "gap": 0.11115227519841842,
+   "match": "Middlesbrough v Swansea",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
+  },
+  {
+   "fixtureId": 561954,
+   "label": "Over 1.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "over",
+    "line": 1.5
+   },
+   "fair": 0.832678171241909,
+   "model": 0.8529520293717036,
+   "odd": 1.13,
+   "estimated": true,
+   "p": 0.8407877144938268,
+   "edge": -0.04990988262197582,
+   "gap": 0.020273858129794542,
+   "match": "Middlesbrough v Swansea",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
+  },
+  {
+   "fixtureId": 561960,
+   "label": "Over 1.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "over",
+    "line": 1.5
+   },
+   "fair": 0.8077597532039182,
+   "model": 0.8881255572581449,
+   "odd": 1.17,
+   "estimated": true,
+   "p": 0.8377597532039183,
+   "edge": -0.01982108875141564,
+   "gap": 0.08036580405422666,
+   "match": "Norwich v QPR",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
+  },
+  {
+   "fixtureId": 561960,
+   "label": "Norwich over 0.5 goals",
    "settle": {
     "kind": "home_ou",
     "side": "over",
     "line": 0.5
    },
-   "fair": 0.803088090812052,
-   "model": 0.7818039589363525,
-   "odd": 1.17,
+   "fair": 0.8218265752233495,
+   "model": 0.9056794922135242,
+   "odd": 1.15,
    "estimated": true,
-   "p": 0.7945744380617722,
-   "edge": -0.07034790746772657,
-   "gap": -0.021284131875699552,
-   "match": "Levante v Elche",
-   "league": "La Liga",
-   "kickoff": "2026-11-23T20:00:00Z"
+   "p": 0.8518265752233495,
+   "edge": -0.02039943849314818,
+   "gap": 0.08385291699017472,
+   "match": "Norwich v QPR",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
   },
   {
-   "fixtureId": 555097,
-   "label": "Internacional or draw (double chance)",
+   "fixtureId": 561956,
+   "label": "Under 4.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "under",
+    "line": 4.5
+   },
+   "fair": 0.8235944124500023,
+   "model": 0.8869237023955723,
+   "odd": 1.15,
+   "estimated": true,
+   "p": 0.8489261284282303,
+   "edge": -0.023734952307535195,
+   "gap": 0.06332928994556997,
+   "match": "Sheffield Utd v Southampton",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
+  },
+  {
+   "fixtureId": 561956,
+   "label": "Sheffield Utd over 0.5 goals",
+   "settle": {
+    "kind": "home_ou",
+    "side": "over",
+    "line": 0.5
+   },
+   "fair": 0.7740630929498746,
+   "model": 0.8041743672235584,
+   "odd": 1.22,
+   "estimated": true,
+   "p": 0.7861076026593481,
+   "edge": -0.0409487247555953,
+   "gap": 0.030111274273683764,
+   "match": "Sheffield Utd v Southampton",
+   "league": "Championship",
+   "kickoff": "2026-11-24T19:45:00Z"
+  },
+  {
+   "fixtureId": 561957,
+   "label": "Wolverhampton or Derby County (no draw)",
    "settle": {
     "kind": "dc",
-    "side": "hd"
+    "side": "ha"
    },
-   "fair": 0.8095507525178227,
-   "model": 0.8516965735844815,
-   "odd": 1.17,
+   "fair": 0.8219281736869677,
+   "model": 0.8276554989214431,
+   "odd": 1.15,
    "estimated": true,
-   "p": 0.8264090809444862,
-   "edge": -0.033101375294951274,
-   "gap": 0.04214582106665876,
-   "match": "Internacional v Vitória",
-   "league": "Brasileirão",
-   "kickoff": "2026-11-23T22:30:00Z"
+   "p": 0.8242191037807578,
+   "edge": -0.052148030652128585,
+   "gap": 0.005727325234475389,
+   "match": "Wolverhampton v Derby County",
+   "league": "Championship",
+   "kickoff": "2026-11-24T20:00:00Z"
   },
   {
-   "fixtureId": 555097,
-   "label": "Internacional draw no bet",
+   "fixtureId": 561957,
+   "label": "Under 4.5 goals",
    "settle": {
-    "kind": "dnb",
-    "side": "home"
+    "kind": "ou",
+    "side": "under",
+    "line": 4.5
    },
-   "fair": 0.8095507525178227,
-   "model": 0.8516965735844815,
-   "odd": 1.26,
+   "fair": 0.7938671872284173,
+   "model": 0.8304232447132814,
+   "odd": 1.19,
    "estimated": true,
-   "note": "refund if draw",
-   "p": 0.8264090809444862,
-   "edge": 0.04127544199005251,
-   "gap": 0.04214582106665876,
-   "match": "Internacional v Vitória",
+   "p": 0.8084896102223629,
+   "edge": -0.03789736383538822,
+   "gap": 0.036556057484864124,
+   "match": "Wolverhampton v Derby County",
+   "league": "Championship",
+   "kickoff": "2026-11-24T20:00:00Z"
+  },
+  {
+   "fixtureId": 555102,
+   "label": "Over 1.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "over",
+    "line": 1.5
+   },
+   "fair": 0.7905096453337459,
+   "model": 0.8358041225467511,
+   "odd": 1.19,
+   "estimated": true,
+   "p": 0.808627436218948,
+   "edge": -0.037733350899451956,
+   "gap": 0.04529447721300517,
+   "match": "Chapecoense v Palmeiras",
    "league": "Brasileirão",
-   "kickoff": "2026-11-23T22:30:00Z"
+   "kickoff": "2026-11-24T21:00:00Z"
   }
  ],
  "notice": null,
  "stats": {
-  "settled": 2,
+  "settled": 3,
   "won": 2,
-  "hitRate": 1,
-  "expectedWins": 1.17,
-  "profitUnits": 1.42,
-  "roi": 0.71,
-  "streak": 2
+  "hitRate": 0.6666666666666666,
+  "expectedWins": 1.75,
+  "profitUnits": 0.42,
+  "roi": 0.13999999999999999,
+  "streak": -1
  },
  "yesterday": {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "slips": [
    {
     "legs": [
      {
-      "fixtureId": 565864,
-      "label": "Augsburg over 0.5 goals",
-      "settle": {
-       "kind": "home_ou",
-       "side": "over",
-       "line": 0.5
-      },
-      "fair": 0.8150182855003852,
-      "model": 0.8976825315674789,
-      "odd": 1.16,
-      "estimated": true,
-      "p": 0.8450182855003853,
-      "edge": -0.019778788819553195,
-      "gap": 0.08266424606709366,
-      "ctx": {
-       "match": "Augsburg v Mainz",
-       "league": "Bundesliga",
-       "kickoff": "2026-11-22T14:30:00Z",
-       "referee": null,
-       "xg": [
-        2.28,
-        2.23
-       ],
-       "marketXg": [
-        1.69,
-        1.78
-       ],
-       "books": 23,
-       "why": [
-        "15th (DLDLL) v 12th (LWLLL)",
-        "xG bookies 1.69–1.78, model 2.28–2.23",
-        "Augsburg home: 9-7 in 5; Mainz away: 11-7 in 4"
-       ]
-      },
-      "result": "won",
-      "score": "3-1"
-     },
-     {
-      "fixtureId": 564752,
-      "label": "Osasuna draw no bet",
-      "settle": {
-       "kind": "dnb",
-       "side": "home"
-      },
-      "fair": 0.7879858657243816,
-      "model": 0.8081108936481887,
-      "odd": 1.32,
-      "estimated": true,
-      "note": "refund if draw",
-      "p": 0.7960358768939044,
-      "edge": 0.05076735749995387,
-      "gap": 0.020125027923807104,
-      "ctx": {
-       "match": "Osasuna v Málaga",
-       "league": "La Liga",
-       "kickoff": "2026-11-22T17:30:00Z",
-       "referee": null,
-       "xg": [
-        1.34,
-        0.72
-       ],
-       "marketXg": [
-        1.64,
-        0.96
-       ],
-       "books": 20,
-       "why": [
-        "16th (LWLLD) v 20th (DLDLL)",
-        "xG bookies 1.64–0.96, model 1.34–0.72",
-        "Osasuna home: 5-4 in 6; Málaga away: 3-11 in 6",
-        "Osasuna relegation battle; Málaga in relegation zone"
-       ]
-      },
-      "result": "won",
-      "score": "1-0"
-     },
-     {
-      "fixtureId": 559629,
+      "fixtureId": 558519,
       "label": "Over 1.5 goals",
       "settle": {
        "kind": "ou",
        "side": "over",
        "line": 1.5
       },
-      "fair": 0.8390050616627648,
-      "model": 0.9131099237659426,
-      "odd": 1.12,
-      "estimated": true,
-      "p": 0.8686470065040359,
-      "edge": -0.027115352715479712,
-      "gap": 0.0741048621031778,
-      "ctx": {
-       "match": "Marseille v Le Mans",
-       "league": "Ligue 1",
-       "kickoff": "2026-11-22T19:45:00Z",
-       "referee": null,
-       "xg": [
-        2.93,
-        1.07
-       ],
-       "marketXg": [
-        2.25,
-        0.97
-       ],
-       "books": 22,
-       "why": [
-        "5th (WWWWW) v 16th (LLDLD)",
-        "xG bookies 2.25–0.97, model 2.93–1.07",
-        "Marseille home: 13-8 in 5; Le Mans away: 5-10 in 5",
-        "Le Mans in relegation zone"
-       ]
-      },
-      "result": "won",
-      "score": "2-3"
-     }
-    ],
-    "totalOdds": 1.71,
-    "prob": 0.584,
-    "ev": 0.002,
-    "result": "won",
-    "paidOdds": 1.71
-   },
-   {
-    "legs": [
-     {
-      "fixtureId": 560646,
-      "label": "Under 4.5 goals",
-      "settle": {
-       "kind": "ou",
-       "side": "under",
-       "line": 4.5
-      },
-      "fair": 0.8236027121289868,
-      "model": 0.8763406365211547,
+      "fair": 0.8202570982484323,
+      "model": 0.9412131891611903,
       "odd": 1.15,
       "estimated": true,
-      "p": 0.8446978818858539,
-      "edge": -0.02859743583126806,
-      "gap": 0.052737924392167845,
+      "p": 0.8502570982484323,
+      "edge": -0.02220433701430291,
+      "gap": 0.12095609091275805,
       "ctx": {
-       "match": "Hull City v Brighton Hove",
-       "league": "Premier League",
-       "kickoff": "2026-11-22T14:00:00Z",
+       "match": "Monza v Fiorentina",
+       "league": "Serie A",
+       "kickoff": "2026-11-23T19:45:00Z",
        "referee": null,
        "xg": [
-        0.9,
-        1.71
+        2.3,
+        2.15
        ],
        "marketXg": [
-        0.89,
-        2.06
+        1.28,
+        1.8
        ],
-       "books": 25,
+       "books": 24,
        "why": [
-        "14th (DLDDL) v 2nd (WWLWW)",
-        "xG bookies 0.89–2.06, model 0.90–1.71",
-        "Hull City home: 7-5 in 5; Brighton Hove away: 11-6 in 5",
-        "Brighton Hove title race"
+        "18th (WLLLL) v 15th (LLDWD)",
+        "xG bookies 1.28–1.80, model 2.30–2.15",
+        "Monza home: 9-9 in 5; Fiorentina away: 10-12 in 5",
+        "Monza in relegation zone"
        ]
       },
       "result": "won",
-      "score": "2-0"
+      "score": "3-0"
      },
      {
-      "fixtureId": 564750,
-      "label": "Santander over 0.5 goals",
+      "fixtureId": 564757,
+      "label": "Over 1.5 goals",
       "settle": {
-       "kind": "home_ou",
+       "kind": "ou",
        "side": "over",
-       "line": 0.5
+       "line": 1.5
       },
-      "fair": 0.7877518656484769,
-      "model": 0.8657815867174609,
-      "odd": 1.2,
+      "fair": 0.7984351500335162,
+      "model": 0.8597324453189331,
+      "odd": 1.18,
       "estimated": true,
-      "p": 0.8177518656484769,
-      "edge": -0.018697761221827758,
-      "gap": 0.07802972106898398,
+      "p": 0.8229540681476829,
+      "edge": -0.028914199585734268,
+      "gap": 0.06129729528541694,
       "ctx": {
-       "match": "Santander v Real Sociedad",
+       "match": "Levante v Elche",
        "league": "La Liga",
-       "kickoff": "2026-11-22T15:15:00Z",
+       "kickoff": "2026-11-23T20:00:00Z",
        "referee": null,
        "xg": [
-        2.01,
-        2.6
+        1.52,
+        1.87
        ],
        "marketXg": [
-        1.55,
-        1.99
+        1.63,
+        1.3
        ],
        "books": 20,
        "why": [
-        "12th (DLWLW) v 5th (WWWLW)",
-        "xG bookies 1.55–1.99, model 2.01–2.60",
-        "Santander home: 11-11 in 6; Real Sociedad away: 13-13 in 6",
-        "Santander relegation battle"
+        "18th (DWLLD) v 19th (DDWLL)",
+        "xG bookies 1.63–1.30, model 1.52–1.87",
+        "Levante home: 13-12 in 5; Elche away: 10-6 in 6",
+        "Levante in relegation zone; Elche in relegation zone"
        ]
       },
       "result": "won",
-      "score": "3-2"
+      "score": "1-1"
      },
      {
-      "fixtureId": 565863,
-      "label": "Bremen draw no bet",
+      "fixtureId": 555097,
+      "label": "Internacional draw no bet",
       "settle": {
        "kind": "dnb",
        "side": "home"
       },
-      "fair": 0.813903164728158,
-      "model": 0.9003535830264108,
-      "odd": 1.24,
+      "fair": 0.8095507525178227,
+      "model": 0.8516965735844815,
+      "odd": 1.26,
       "estimated": true,
       "note": "refund if draw",
-      "p": 0.8439031647281581,
-      "edge": 0.0464399242629161,
-      "gap": 0.08645041829825273,
+      "p": 0.8264090809444862,
+      "edge": 0.04127544199005251,
+      "gap": 0.04214582106665876,
       "ctx": {
-       "match": "Bremen v HSV",
-       "league": "Bundesliga",
-       "kickoff": "2026-11-22T16:30:00Z",
+       "match": "Internacional v Vitória",
+       "league": "Brasileirão",
+       "kickoff": "2026-11-23T22:30:00Z",
        "referee": null,
        "xg": [
-        2.71,
-        0.94
+        1.67,
+        0.71
        ],
        "marketXg": [
-        2.08,
-        1.09
+        1.81,
+        0.96
        ],
-       "books": 23,
+       "books": 24,
        "why": [
-        "6th (DDWWL) v 11th (WWLLW)",
-        "xG bookies 2.08–1.09, model 2.71–0.94",
-        "Bremen home: 10-5 in 4; HSV away: 4-13 in 5"
+        "17th (LWLWL) v 15th (DDLLW)",
+        "xG bookies 1.81–0.96, model 1.67–0.71",
+        "Internacional home: 22-17 in 17; Vitória away: 12-35 in 17",
+        "Internacional in relegation zone; Vitória relegation battle",
+        "met this season: 2-0"
        ]
       },
-      "result": "won",
-      "score": "4-0"
+      "result": "lost",
+      "score": "2-5"
      }
     ],
     "totalOdds": 1.71,
-    "prob": 0.583,
-    "ev": -0.002,
-    "result": "won",
-    "paidOdds": 1.71
+    "prob": 0.578,
+    "ev": -0.011,
+    "result": "lost",
+    "paidOdds": 0
    }
   ]
  }
