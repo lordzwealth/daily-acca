@@ -1,371 +1,614 @@
 {
- "date": "2026-11-27",
- "generatedAt": "2026-11-27T05:06:09.250Z",
+ "date": "2026-11-28",
+ "generatedAt": "2026-11-28T05:06:10.903Z",
  "requests": {
-  "footballData": 9,
+  "footballData": 10,
   "odds": 8,
-  "oddsCreditsLeft": 428
+  "oddsCreditsLeft": 412
  },
- "scanned": 8,
- "analysed": 8,
+ "scanned": 37,
+ "analysed": 36,
  "slips": [
   {
    "legs": [
     {
-     "fixtureId": 558820,
-     "label": "Groningen draw no bet",
-     "settle": {
-      "kind": "dnb",
-      "side": "home"
-     },
-     "fair": 0.8614226355684038,
-     "model": 0.8804136031434278,
-     "odd": 1.14,
-     "estimated": true,
-     "note": "refund if draw",
-     "p": 0.8690190225984135,
-     "edge": -0.009318314237808711,
-     "gap": 0.018990967575023943,
-     "ctx": {
-      "match": "Groningen v Willem II",
-      "league": "Eredivisie",
-      "kickoff": "2026-11-27T19:00:00Z",
-      "referee": null,
-      "xg": [
-       3.4,
-       1.43
-      ],
-      "marketXg": [
-       2.36,
-       0.97
-      ],
-      "books": 22,
-      "why": [
-       "10th (LDLLL) v 18th (LLLDL)",
-       "xG bookies 2.36–0.97, model 3.40–1.43",
-       "Groningen home: 14-17 in 7; Willem II away: 7-25 in 7",
-       "Groningen relegation battle; Willem II in relegation zone"
-      ]
-     }
-    },
-    {
-     "fixtureId": 565869,
-     "label": "Bremen or draw (double chance)",
+     "fixtureId": 561970,
+     "label": "Birmingham or draw (double chance)",
      "settle": {
       "kind": "dc",
       "side": "hd"
      },
-     "fair": 0.7823502514860541,
-     "model": 0.9502649555778837,
-     "odd": 1.21,
+     "fair": 0.8418932992617489,
+     "model": 0.9239128486531922,
+     "odd": 1.12,
      "estimated": true,
-     "p": 0.8123502514860541,
-     "edge": -0.017056195701874555,
-     "gap": 0.16791470409182963,
+     "p": 0.871893299261749,
+     "edge": -0.023479504826841024,
+     "gap": 0.08201954939144329,
      "ctx": {
-      "match": "Bremen v M'gladbach",
-      "league": "Bundesliga",
-      "kickoff": "2026-11-27T19:30:00Z",
+      "match": "Birmingham v Bolton",
+      "league": "Championship",
+      "kickoff": "2026-11-28T15:00:00Z",
       "referee": null,
       "xg": [
-       3.41,
-       0.82
+       2.39,
+       0.65
       ],
       "marketXg": [
-       2.03,
-       1.21
+       2.14,
+       0.97
       ],
-      "books": 23,
+      "books": 22,
       "why": [
-       "6th (DWWLW) v 18th (LWDLL)",
-       "xG bookies 2.03–1.21, model 3.41–0.82",
-       "Bremen home: 14-5 in 5; M'gladbach away: 5-15 in 5",
-       "M'gladbach in relegation zone"
+       "7th (WWWLW) v 21st (LWLDL)",
+       "xG bookies 2.14–0.97, model 2.39–0.65",
+       "Birmingham home: 6-2 in 3; Bolton away: 2-3 in 2"
       ]
      }
     },
     {
-     "fixtureId": 564765,
-     "label": "Levante or Santander (no draw)",
+     "fixtureId": 567362,
+     "label": "Arouca draw no bet",
      "settle": {
-      "kind": "dc",
-      "side": "ha"
+      "kind": "dnb",
+      "side": "home"
      },
-     "fair": 0.7568395710221055,
-     "model": 0.8412156435055163,
-     "odd": 1.25,
+     "fair": 0.8050207475476556,
+     "model": 0.9216121767932468,
+     "odd": 1.28,
      "estimated": true,
-     "p": 0.7868395710221056,
-     "edge": -0.01645053622236803,
-     "gap": 0.08437607248341072,
+     "note": "refund if draw",
+     "p": 0.8350207475476557,
+     "edge": 0.06882655686099937,
+     "gap": 0.11659142924559118,
      "ctx": {
-      "match": "Levante v Santander",
-      "league": "La Liga",
-      "kickoff": "2026-11-27T20:00:00Z",
+      "match": "Arouca v Rio Ave",
+      "league": "Primeira Liga",
+      "kickoff": "2026-11-28T15:30:00Z",
       "referee": null,
       "xg": [
-       3.09,
-       1.55
+       1.9,
+       0.48
       ],
       "marketXg": [
-       1.94,
-       1.5
+       1.73,
+       0.94
       ],
-      "books": 21,
+      "books": 20,
       "why": [
-       "15th (WLLDD) v 7th (LWLWW)",
-       "xG bookies 1.94–1.50, model 3.09–1.55",
-       "Levante home: 14-13 in 6; Santander away: 6-19 in 6",
-       "Levante relegation battle"
+       "5th (DWWWL) v 17th (LWLLL)",
+       "xG bookies 1.73–0.94, model 1.90–0.48",
+       "Arouca home: 9-3 in 5; Rio Ave away: 3-8 in 5",
+       "Rio Ave in relegation zone"
+      ]
+     }
+    },
+    {
+     "fixtureId": 558819,
+     "label": "Sparta over 0.5 goals",
+     "settle": {
+      "kind": "away_ou",
+      "side": "over",
+      "line": 0.5
+     },
+     "fair": 0.7955637420381201,
+     "model": 0.9073710762166186,
+     "odd": 1.19,
+     "estimated": true,
+     "p": 0.8255637420381201,
+     "edge": -0.01757914697463714,
+     "gap": 0.11180733417849853,
+     "ctx": {
+      "match": "Cambuur v Sparta",
+      "league": "Eredivisie",
+      "kickoff": "2026-11-28T20:00:00Z",
+      "referee": null,
+      "xg": [
+       2.72,
+       2.38
+      ],
+      "marketXg": [
+       1.9,
+       1.59
+      ],
+      "books": 22,
+      "why": [
+       "8th (DWWLW) v 14th (WLWLL)",
+       "xG bookies 1.90–1.59, model 2.72–2.38",
+       "Cambuur home: 14-20 in 7; Sparta away: 12-15 in 6",
+       "Sparta relegation battle"
       ]
      }
     }
    ],
-   "totalOdds": 1.72,
-   "prob": 0.555,
-   "ev": -0.042,
+   "totalOdds": 1.71,
+   "prob": 0.601,
+   "ev": 0.025,
+   "result": "pending",
+   "paidOdds": null
+  },
+  {
+   "legs": [
+    {
+     "fixtureId": 560652,
+     "label": "Under 4.5 goals",
+     "settle": {
+      "kind": "ou",
+      "side": "under",
+      "line": 4.5
+     },
+     "fair": 0.8236022219988856,
+     "model": 0.9029628295139118,
+     "odd": 1.15,
+     "estimated": true,
+     "p": 0.8536022219988856,
+     "edge": -0.018357444701281644,
+     "gap": 0.07936060751502627,
+     "ctx": {
+      "match": "Leeds United v Coventry City",
+      "league": "Premier League",
+      "kickoff": "2026-11-28T15:00:00Z",
+      "referee": null,
+      "xg": [
+       1.82,
+       0.59
+      ],
+      "marketXg": [
+       2.05,
+       0.9
+      ],
+      "books": 25,
+      "why": [
+       "7th (DDLWW) v 15th (LLWLW)",
+       "xG bookies 2.05–0.90, model 1.82–0.59",
+       "Leeds United home: 7-3 in 5; Coventry City away: 3-10 in 5"
+      ]
+     }
+    },
+    {
+     "fixtureId": 561975,
+     "label": "West Brom draw no bet",
+     "settle": {
+      "kind": "dnb",
+      "side": "home"
+     },
+     "fair": 0.8022221133179779,
+     "model": 0.922166999748752,
+     "odd": 1.28,
+     "estimated": true,
+     "note": "refund if draw",
+     "p": 0.8322221133179779,
+     "edge": 0.06524430504701173,
+     "gap": 0.11994488643077417,
+     "ctx": {
+      "match": "West Brom v Bristol City",
+      "league": "Championship",
+      "kickoff": "2026-11-28T15:00:00Z",
+      "referee": null,
+      "xg": [
+       2.42,
+       0.67
+      ],
+      "marketXg": [
+       1.76,
+       0.96
+      ],
+      "books": 22,
+      "why": [
+       "4th (WDWDW) v 17th (WLLLD)",
+       "xG bookies 1.76–0.96, model 2.42–0.67",
+       "West Brom home: 4-1 in 2; Bristol City away: 3-4 in 3"
+      ]
+     }
+    },
+    {
+     "fixtureId": 558826,
+     "label": "PSV over 1.5 goals",
+     "settle": {
+      "kind": "home_ou",
+      "side": "over",
+      "line": 1.5
+     },
+     "fair": 0.8117097306781479,
+     "model": 0.9050916190821369,
+     "odd": 1.16,
+     "estimated": true,
+     "p": 0.8417097306781479,
+     "edge": -0.023616712413348506,
+     "gap": 0.09338188840398898,
+     "ctx": {
+      "match": "PSV v Go Ahead",
+      "league": "Eredivisie",
+      "kickoff": "2026-11-28T17:45:00Z",
+      "referee": null,
+      "xg": [
+       3.96,
+       0.93
+      ],
+      "marketXg": [
+       3.08,
+       1
+      ],
+      "books": 22,
+      "why": [
+       "1st (LDWWW) v 9th (LWLWL)",
+       "xG bookies 3.08–1.00, model 3.96–0.93",
+       "PSV home: 21-5 in 6; Go Ahead away: 10-19 in 7",
+       "PSV title race"
+      ]
+     }
+    }
+   ],
+   "totalOdds": 1.71,
+   "prob": 0.598,
+   "ev": 0.021,
    "result": "pending",
    "paidOdds": null
   }
  ],
  "topLegs": [
   {
-   "fixtureId": 558820,
-   "label": "Groningen or Willem II (no draw)",
+   "fixtureId": 561973,
+   "label": "Norwich or draw (double chance)",
    "settle": {
     "kind": "dc",
-    "side": "ha"
+    "side": "da"
    },
-   "fair": 0.8173544913019961,
-   "model": 0.8645497345350379,
-   "odd": 1.15,
-   "estimated": true,
-   "p": 0.8362325885952129,
-   "edge": -0.03833252311550528,
-   "gap": 0.047195243233041806,
-   "match": "Groningen v Willem II",
-   "league": "Eredivisie",
-   "kickoff": "2026-11-27T19:00:00Z"
-  },
-  {
-   "fixtureId": 558820,
-   "label": "Groningen draw no bet",
-   "settle": {
-    "kind": "dnb",
-    "side": "home"
-   },
-   "fair": 0.8614226355684038,
-   "model": 0.8804136031434278,
-   "odd": 1.14,
-   "estimated": true,
-   "note": "refund if draw",
-   "p": 0.8690190225984135,
-   "edge": -0.009318314237808711,
-   "gap": 0.018990967575023943,
-   "match": "Groningen v Willem II",
-   "league": "Eredivisie",
-   "kickoff": "2026-11-27T19:00:00Z"
-  },
-  {
-   "fixtureId": 558820,
-   "label": "Over 0.5 first-half goals",
-   "settle": {
-    "kind": "fh_ou",
-    "side": "over",
-    "line": 0.5
-   },
-   "fair": 0.7689771544020716,
-   "model": 0.8773256525370099,
-   "odd": 1.23,
-   "estimated": true,
-   "p": 0.7989771544020716,
-   "edge": -0.017258100085451922,
-   "gap": 0.1083484981349383,
-   "match": "Groningen v Willem II",
-   "league": "Eredivisie",
-   "kickoff": "2026-11-27T19:00:00Z"
-  },
-  {
-   "fixtureId": 565869,
-   "label": "Bremen or draw (double chance)",
-   "settle": {
-    "kind": "dc",
-    "side": "hd"
-   },
-   "fair": 0.7823502514860541,
-   "model": 0.9502649555778837,
-   "odd": 1.21,
-   "estimated": true,
-   "p": 0.8123502514860541,
-   "edge": -0.017056195701874555,
-   "gap": 0.16791470409182963,
-   "match": "Bremen v M'gladbach",
-   "league": "Bundesliga",
-   "kickoff": "2026-11-27T19:30:00Z"
-  },
-  {
-   "fixtureId": 565869,
-   "label": "Bremen or M'gladbach (no draw)",
-   "settle": {
-    "kind": "dc",
-    "side": "ha"
-   },
-   "fair": 0.7745770461819845,
-   "model": 0.899315733531037,
+   "fair": 0.7753872354026674,
+   "model": 0.8374238945769374,
    "odd": 1.22,
    "estimated": true,
-   "p": 0.8045770461819846,
-   "edge": -0.018416003657978908,
-   "gap": 0.12473868734905247,
-   "match": "Bremen v M'gladbach",
-   "league": "Bundesliga",
-   "kickoff": "2026-11-27T19:30:00Z"
+   "p": 0.8002018990723754,
+   "edge": -0.023753683131702008,
+   "gap": 0.06203665917427004,
+   "match": "Preston NE v Norwich",
+   "league": "Championship",
+   "kickoff": "2026-11-28T12:30:00Z"
   },
   {
-   "fixtureId": 565869,
-   "label": "Bremen draw no bet",
+   "fixtureId": 561973,
+   "label": "Norwich draw no bet",
    "settle": {
     "kind": "dnb",
-    "side": "home"
+    "side": "away"
    },
-   "fair": 0.7823502514860541,
-   "model": 0.9502649555778837,
-   "odd": 1.31,
+   "fair": 0.7753872354026674,
+   "model": 0.8374238945769374,
+   "odd": 1.34,
    "estimated": true,
    "note": "refund if draw",
-   "p": 0.8123502514860541,
-   "edge": 0.06417882944673092,
-   "gap": 0.16791470409182963,
-   "match": "Bremen v M'gladbach",
-   "league": "Bundesliga",
-   "kickoff": "2026-11-27T19:30:00Z"
+   "p": 0.8002018990723754,
+   "edge": 0.07227054475698313,
+   "gap": 0.06203665917427004,
+   "match": "Preston NE v Norwich",
+   "league": "Championship",
+   "kickoff": "2026-11-28T12:30:00Z"
   },
   {
-   "fixtureId": 565869,
+   "fixtureId": 561973,
    "label": "Over 1.5 goals",
    "settle": {
     "kind": "ou",
     "side": "over",
     "line": 1.5
    },
-   "fair": 0.8413381186185187,
-   "model": 0.9273936300330088,
-   "odd": 1.12,
+   "fair": 0.8200257919323417,
+   "model": 0.8523351491220374,
+   "odd": 1.15,
    "estimated": true,
-   "p": 0.8713381186185187,
-   "edge": -0.024101307147258888,
-   "gap": 0.08605551141449008,
-   "match": "Bremen v M'gladbach",
-   "league": "Bundesliga",
-   "kickoff": "2026-11-27T19:30:00Z"
+   "p": 0.8329495348082201,
+   "edge": -0.04210803497054694,
+   "gap": 0.03230935718969574,
+   "match": "Preston NE v Norwich",
+   "league": "Championship",
+   "kickoff": "2026-11-28T12:30:00Z"
   },
   {
-   "fixtureId": 565869,
-   "label": "Over 0.5 first-half goals",
+   "fixtureId": 561969,
+   "label": "Blackburn over 0.5 goals",
    "settle": {
-    "kind": "fh_ou",
+    "kind": "home_ou",
     "side": "over",
     "line": 0.5
    },
-   "fair": 0.7577704940649131,
-   "model": 0.8445460298911736,
-   "odd": 1.24,
-   "estimated": true,
-   "p": 0.7877704940649132,
-   "edge": -0.02316458735950766,
-   "gap": 0.08677553582626041,
-   "match": "Bremen v M'gladbach",
-   "league": "Bundesliga",
-   "kickoff": "2026-11-27T19:30:00Z"
-  },
-  {
-   "fixtureId": 564765,
-   "label": "Levante or Santander (no draw)",
-   "settle": {
-    "kind": "dc",
-    "side": "ha"
-   },
-   "fair": 0.7568395710221055,
-   "model": 0.8412156435055163,
-   "odd": 1.25,
-   "estimated": true,
-   "p": 0.7868395710221056,
-   "edge": -0.01645053622236803,
-   "gap": 0.08437607248341072,
-   "match": "Levante v Santander",
-   "league": "La Liga",
-   "kickoff": "2026-11-27T20:00:00Z"
-  },
-  {
-   "fixtureId": 564765,
-   "label": "Over 0.5 first-half goals",
-   "settle": {
-    "kind": "fh_ou",
-    "side": "over",
-    "line": 0.5
-   },
-   "fair": 0.7770635366362787,
-   "model": 0.8665661951742699,
+   "fair": 0.7823788023473641,
+   "model": 0.847620245438971,
    "odd": 1.21,
    "estimated": true,
-   "p": 0.8070635366362787,
-   "edge": -0.023453120670102745,
-   "gap": 0.08950265853799122,
-   "match": "Levante v Santander",
-   "league": "La Liga",
-   "kickoff": "2026-11-27T20:00:00Z"
+   "p": 0.8084753795840068,
+   "edge": -0.02174479070335178,
+   "gap": 0.06524144309160684,
+   "match": "Blackburn v Charlton",
+   "league": "Championship",
+   "kickoff": "2026-11-28T12:30:00Z"
   },
   {
-   "fixtureId": 564765,
-   "label": "Santander over 0.5 goals",
+   "fixtureId": 561972,
+   "label": "Wolverhampton or draw (double chance)",
+   "settle": {
+    "kind": "dc",
+    "side": "da"
+   },
+   "fair": 0.8390812055932259,
+   "model": 0.8494060131493583,
+   "odd": 1.12,
+   "estimated": true,
+   "p": 0.8432111286156788,
+   "edge": -0.05560353595043965,
+   "gap": 0.01032480755613241,
+   "match": "Lincoln City v Wolverhampton",
+   "league": "Championship",
+   "kickoff": "2026-11-28T12:30:00Z"
+  },
+  {
+   "fixtureId": 561972,
+   "label": "Wolverhampton draw no bet",
+   "settle": {
+    "kind": "dnb",
+    "side": "away"
+   },
+   "fair": 0.8390812055932259,
+   "model": 0.8494060131493583,
+   "odd": 1.19,
+   "estimated": true,
+   "note": "refund if draw",
+   "p": 0.8432111286156788,
+   "edge": 0.0034212430526576743,
+   "gap": 0.01032480755613241,
+   "match": "Lincoln City v Wolverhampton",
+   "league": "Championship",
+   "kickoff": "2026-11-28T12:30:00Z"
+  },
+  {
+   "fixtureId": 561972,
+   "label": "Wolverhampton over 0.5 goals",
    "settle": {
     "kind": "away_ou",
     "side": "over",
     "line": 0.5
    },
-   "fair": 0.7768697167387144,
-   "model": 0.7875625311553074,
-   "odd": 1.21,
+   "fair": 0.8447153978048882,
+   "model": 0.8525599064769158,
+   "odd": 1.12,
    "estimated": true,
-   "p": 0.7811468425053516,
-   "edge": -0.054812320568524586,
-   "gap": 0.010692814416592977,
-   "match": "Levante v Santander",
-   "league": "La Liga",
-   "kickoff": "2026-11-27T20:00:00Z"
+   "p": 0.8478532012736992,
+   "edge": -0.05040441457345679,
+   "gap": 0.007844508672027573,
+   "match": "Lincoln City v Wolverhampton",
+   "league": "Championship",
+   "kickoff": "2026-11-28T12:30:00Z"
   },
   {
-   "fixtureId": 561968,
-   "label": "Under 4.5 goals",
+   "fixtureId": 561965,
+   "label": "Under 3.5 goals",
    "settle": {
     "kind": "ou",
     "side": "under",
-    "line": 4.5
+    "line": 3.5
    },
-   "fair": 0.7806143653994704,
-   "model": 0.9109402856145086,
-   "odd": 1.21,
+   "fair": 0.7891064441597745,
+   "model": 0.9427437324711775,
+   "odd": 1.2,
    "estimated": true,
-   "p": 0.8106143653994704,
-   "edge": -0.0191566178666408,
-   "gap": 0.1303259202150382,
-   "match": "Southampton v Middlesbrough",
+   "p": 0.8191064441597745,
+   "edge": -0.01707226700827058,
+   "gap": 0.153637288311403,
+   "match": "Wrexham v Portsmouth",
    "league": "Championship",
-   "kickoff": "2026-11-27T20:00:00Z"
+   "kickoff": "2026-11-28T15:00:00Z"
+  },
+  {
+   "fixtureId": 561975,
+   "label": "West Brom or draw (double chance)",
+   "settle": {
+    "kind": "dc",
+    "side": "hd"
+   },
+   "fair": 0.8022221133179779,
+   "model": 0.922166999748752,
+   "odd": 1.18,
+   "estimated": true,
+   "p": 0.8322221133179779,
+   "edge": -0.017977906284786127,
+   "gap": 0.11994488643077417,
+   "match": "West Brom v Bristol City",
+   "league": "Championship",
+   "kickoff": "2026-11-28T15:00:00Z"
+  },
+  {
+   "fixtureId": 561975,
+   "label": "West Brom or Bristol City (no draw)",
+   "settle": {
+    "kind": "dc",
+    "side": "ha"
+   },
+   "fair": 0.7502724550828335,
+   "model": 0.8327771924236935,
+   "odd": 1.26,
+   "estimated": true,
+   "p": 0.7802724550828335,
+   "edge": -0.016856706595629767,
+   "gap": 0.08250473734086006,
+   "match": "West Brom v Bristol City",
+   "league": "Championship",
+   "kickoff": "2026-11-28T15:00:00Z"
+  },
+  {
+   "fixtureId": 561975,
+   "label": "West Brom draw no bet",
+   "settle": {
+    "kind": "dnb",
+    "side": "home"
+   },
+   "fair": 0.8022221133179779,
+   "model": 0.922166999748752,
+   "odd": 1.28,
+   "estimated": true,
+   "note": "refund if draw",
+   "p": 0.8322221133179779,
+   "edge": 0.06524430504701173,
+   "gap": 0.11994488643077417,
+   "match": "West Brom v Bristol City",
+   "league": "Championship",
+   "kickoff": "2026-11-28T15:00:00Z"
+  },
+  {
+   "fixtureId": 561975,
+   "label": "Over 1.5 goals",
+   "settle": {
+    "kind": "ou",
+    "side": "over",
+    "line": 1.5
+   },
+   "fair": 0.7647352291566448,
+   "model": 0.8188885799682742,
+   "odd": 1.23,
+   "estimated": true,
+   "p": 0.7863965694812967,
+   "edge": -0.03273221953800509,
+   "gap": 0.05415335081162942,
+   "match": "West Brom v Bristol City",
+   "league": "Championship",
+   "kickoff": "2026-11-28T15:00:00Z"
   }
  ],
  "notice": null,
  "stats": {
-  "settled": 4,
-  "won": 2,
-  "hitRate": 0.5,
-  "expectedWins": 2.29,
-  "profitUnits": -0.58,
-  "roi": -0.14500000000000002,
-  "streak": -2
+  "settled": 5,
+  "won": 3,
+  "hitRate": 0.6,
+  "expectedWins": 2.84,
+  "profitUnits": -0.07,
+  "roi": -0.014000000000000012,
+  "streak": 1
  },
  "yesterday": {
-  "date": "2026-11-26",
-  "slips": []
+  "date": "2026-11-27",
+  "slips": [
+   {
+    "legs": [
+     {
+      "fixtureId": 558820,
+      "label": "Groningen draw no bet",
+      "settle": {
+       "kind": "dnb",
+       "side": "home"
+      },
+      "fair": 0.8614226355684038,
+      "model": 0.8804136031434278,
+      "odd": 1.14,
+      "estimated": true,
+      "note": "refund if draw",
+      "p": 0.8690190225984135,
+      "edge": -0.009318314237808711,
+      "gap": 0.018990967575023943,
+      "ctx": {
+       "match": "Groningen v Willem II",
+       "league": "Eredivisie",
+       "kickoff": "2026-11-27T19:00:00Z",
+       "referee": null,
+       "xg": [
+        3.4,
+        1.43
+       ],
+       "marketXg": [
+        2.36,
+        0.97
+       ],
+       "books": 22,
+       "why": [
+        "10th (LDLLL) v 18th (LLLDL)",
+        "xG bookies 2.36–0.97, model 3.40–1.43",
+        "Groningen home: 14-17 in 7; Willem II away: 7-25 in 7",
+        "Groningen relegation battle; Willem II in relegation zone"
+       ]
+      },
+      "result": "void",
+      "score": "1-1"
+     },
+     {
+      "fixtureId": 565869,
+      "label": "Bremen or draw (double chance)",
+      "settle": {
+       "kind": "dc",
+       "side": "hd"
+      },
+      "fair": 0.7823502514860541,
+      "model": 0.9502649555778837,
+      "odd": 1.21,
+      "estimated": true,
+      "p": 0.8123502514860541,
+      "edge": -0.017056195701874555,
+      "gap": 0.16791470409182963,
+      "ctx": {
+       "match": "Bremen v M'gladbach",
+       "league": "Bundesliga",
+       "kickoff": "2026-11-27T19:30:00Z",
+       "referee": null,
+       "xg": [
+        3.41,
+        0.82
+       ],
+       "marketXg": [
+        2.03,
+        1.21
+       ],
+       "books": 23,
+       "why": [
+        "6th (DWWLW) v 18th (LWDLL)",
+        "xG bookies 2.03–1.21, model 3.41–0.82",
+        "Bremen home: 14-5 in 5; M'gladbach away: 5-15 in 5",
+        "M'gladbach in relegation zone"
+       ]
+      },
+      "result": "won",
+      "score": "3-3"
+     },
+     {
+      "fixtureId": 564765,
+      "label": "Levante or Santander (no draw)",
+      "settle": {
+       "kind": "dc",
+       "side": "ha"
+      },
+      "fair": 0.7568395710221055,
+      "model": 0.8412156435055163,
+      "odd": 1.25,
+      "estimated": true,
+      "p": 0.7868395710221056,
+      "edge": -0.01645053622236803,
+      "gap": 0.08437607248341072,
+      "ctx": {
+       "match": "Levante v Santander",
+       "league": "La Liga",
+       "kickoff": "2026-11-27T20:00:00Z",
+       "referee": null,
+       "xg": [
+        3.09,
+        1.55
+       ],
+       "marketXg": [
+        1.94,
+        1.5
+       ],
+       "books": 21,
+       "why": [
+        "15th (WLLDD) v 7th (LWLWW)",
+        "xG bookies 1.94–1.50, model 3.09–1.55",
+        "Levante home: 14-13 in 6; Santander away: 6-19 in 6",
+        "Levante relegation battle"
+       ]
+      },
+      "result": "won",
+      "score": "1-3"
+     }
+    ],
+    "totalOdds": 1.72,
+    "prob": 0.555,
+    "ev": -0.042,
+    "result": "won",
+    "paidOdds": 1.51
+   }
+  ]
  }
 }
